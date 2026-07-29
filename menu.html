@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Programs | AIRE SPA & AESTHETIC</title>
+<style>
+:root{--bg:#f7f5ef;--paper:#fffdfa;--ink:#252722;--muted:#686b65;--line:#d9d6cf;--sand:#dfd8cc;--green:#102a24;--gold:#c7a86a;--header-h:80px;--content-w:1460px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 76px)}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,"Noto Sans KR","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}.serif,.title,.section-head h2,.program-name h3,.signature h4,.subcard h4{font-family:Georgia,"Times New Roman",serif}.wrap{width:min(91vw,var(--content-w));margin-inline:auto}h1,h2,h3,h4,p{word-break:keep-all;overflow-wrap:break-word}
+/* shared header */
+.site-header{height:var(--header-h);display:grid;grid-template-columns:210px 1fr 220px;align-items:center;padding:0 3.5vw;background:rgba(255,253,250,.90);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(37,39,34,.09);backdrop-filter:blur(14px);transition:background-color .35s ease,box-shadow .35s ease,border-color .35s ease}.site-header.scrolled,.site-header.open{background:rgba(255,253,250,.985);border-bottom-color:rgba(37,39,34,.13);box-shadow:0 12px 34px rgba(26,31,27,.055)}.logo{display:inline-flex;width:150px}.logo img{display:block;width:100%;height:auto;object-fit:contain}.primary-nav{display:flex;justify-content:center;align-items:center;gap:clamp(34px,4.1vw,70px);font-size:14px;letter-spacing:.15em;text-transform:uppercase}.primary-nav a{position:relative;display:inline-flex;align-items:center;height:30px;line-height:1;white-space:nowrap}.primary-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:currentColor;transition:right .32s ease}.primary-nav a:hover::after,.primary-nav a.active::after{right:0}.header-actions{display:flex;justify-content:flex-end;align-items:center;gap:18px}.lang{display:flex;gap:0;font-size:14px;letter-spacing:.12em}.lang button{border:0;background:none;opacity:.45;cursor:pointer;min-width:32px;min-height:36px;display:grid;place-items:center;padding:0}.lang button.active{opacity:1;border-bottom:1px solid}.mobile-reserve,.menu-toggle{display:none}
+/* page hero */
+.program-hero{background:var(--paper);border-bottom:1px solid var(--line)}.program-hero-grid{min-height:455px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:8vw;align-items:end;padding:92px 0 70px}.title{font-size:clamp(64px,7vw,106px);font-weight:400;line-height:.92;letter-spacing:-.035em;margin:0}.intro{font-size:16px;line-height:1.84;color:var(--muted);max-width:540px;margin:0 0 6px}
+.program-tabs-band{position:sticky;top:var(--header-h);z-index:40;background:rgba(247,245,239,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.tabs{display:flex;gap:clamp(22px,3.2vw,50px);align-items:center;min-height:66px;overflow:auto;white-space:nowrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase}.tabs a{position:relative;padding:24px 0 20px;color:var(--muted)}.tabs a::after{content:"";position:absolute;left:0;right:100%;bottom:14px;height:1px;background:var(--ink);transition:right .3s ease}.tabs a:hover,.tabs a.active{color:var(--ink)}.tabs a:hover::after,.tabs a.active::after{right:0}
+.program-content{padding:82px 0 34px}.section{scroll-margin-top:calc(var(--header-h) + 82px);margin-bottom:104px}.section-head{display:grid;grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);gap:8vw;border-top:1px solid var(--line);padding-top:25px;margin-bottom:30px}.section-head h2{font-size:clamp(36px,3.4vw,50px);font-weight:400;line-height:1.02;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:15px;line-height:1.82;max-width:720px}.program{display:grid;grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);gap:8vw;padding:31px 0;border-top:1px solid rgba(37,39,34,.16)}.program:first-of-type{border-top:0}.program-name h3{font-size:clamp(25px,2.1vw,31px);font-weight:400;line-height:1.12;margin:0 0 10px}.eyebrow{font-size:10px;letter-spacing:.16em;color:#406258;margin-bottom:11px}.desc{font-size:14px;line-height:1.8;color:var(--muted);margin:0;max-width:650px}.price-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px;margin-top:20px}.price{border:1px solid rgba(37,39,34,.20);padding:17px 16px;display:flex;justify-content:space-between;gap:12px;background:rgba(255,253,250,.42)}.price strong{font-weight:500}.note{margin-top:12px;font-size:12px;color:var(--muted)}.signature-list{display:grid;gap:12px}.signature{background:var(--paper);border:1px solid rgba(37,39,34,.15);padding:23px 25px;transition:transform .32s ease,border-color .32s ease}.signature:hover{transform:translateY(-2px);border-color:rgba(37,39,34,.30)}.sig-top{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;padding-bottom:17px;border-bottom:1px solid rgba(37,39,34,.12)}.sig-top h4{font-size:22px;font-weight:400;margin:0}.sig-time{font-size:13px;letter-spacing:.08em}.sig-price{font-size:17px}.included{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.included span{border:1px solid rgba(37,39,34,.17);border-radius:100px;padding:8px 12px;font-size:12px;background:#fff}.two-col,.additional{display:grid;grid-template-columns:1fr 1fr;gap:16px}.subcard{border:1px solid rgba(37,39,34,.17);padding:24px;background:rgba(255,253,250,.38)}.subcard h4{font-size:23px;font-weight:400;margin:0 0 13px}.process{font-size:12px;line-height:1.7;color:var(--muted);padding:12px 0;border-top:1px solid rgba(37,39,34,.12);border-bottom:1px solid rgba(37,39,34,.12);margin:15px 0}.subcard .price-grid{grid-template-columns:1fr 1fr}
+.program-cta{background:var(--sand);padding:88px 0 84px}.program-cta-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:8vw;align-items:end}.program-cta h2{font-size:clamp(42px,4.8vw,72px);font-weight:400;line-height:1;margin:0}.program-cta-copy p{font-size:15px;line-height:1.84;color:#565951;max-width:560px;margin:0 0 28px}.text-link{position:relative;display:inline-block;padding-bottom:8px;font-size:11px;letter-spacing:.17em;text-transform:uppercase}.text-link::after{content:"";position:absolute;left:0;bottom:0;width:42px;height:1px;background:currentColor;transition:width .35s ease}.text-link:hover::after{width:100%}
+/* footer */
+footer{background:var(--green);color:#ece5d8;padding:36px 4vw 19px}.footer-shell{max-width:1500px;margin:0 auto}.footer-row{display:grid;grid-template-columns:minmax(240px,1fr) minmax(560px,2.1fr) minmax(245px,.9fr);gap:3.5vw;align-items:start}.footer-brand-block img{width:230px;max-width:100%;height:auto;display:block;object-fit:contain}.footer-brand-block p{margin:14px 0 0;font-size:13px;line-height:1.6;color:rgba(236,229,216,.72)}.footer-menu-block h3,.footer-reservation-block h3{margin:0 0 16px;height:20px;display:flex;align-items:center;font-size:13px;line-height:20px;letter-spacing:.16em;font-weight:500;color:var(--gold)}.footer-menu-row{display:flex;flex-wrap:nowrap;gap:clamp(24px,3vw,54px);align-items:center}.footer-menu-row a{font-size:13px;line-height:1.4;color:rgba(236,229,216,.84);white-space:nowrap}.footer-reservation-block{border:1px solid rgba(199,168,106,.42);padding:16px 18px}.footer-reservation-lines a{display:block;width:max-content;max-width:100%;margin:0 0 6px;font-size:16px;line-height:1.45;color:rgba(236,229,216,.88)}.footer-instagram-row{display:flex!important;align-items:center!important;gap:9px;margin-top:10px!important}.footer-instagram-row svg{width:19px;height:19px;flex:0 0 19px}.footer-copyright{margin-top:24px;padding-top:13px;border-top:1px solid rgba(236,229,216,.16);text-align:right;font-size:9px;letter-spacing:.14em;color:rgba(236,229,216,.5)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .68s cubic-bezier(.22,.68,.26,1),transform .68s cubic-bezier(.22,.68,.26,1);transition-delay:var(--reveal-delay,0ms)}.reveal.is-visible{opacity:1;transform:none}a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offset:5px}
+@media(max-width:1100px){.site-header{grid-template-columns:1fr auto;padding-inline:4vw}.primary-nav{position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;align-items:flex-start;gap:0;max-height:0;opacity:0;visibility:hidden;overflow:hidden;transform:translateY(-6px);padding:0 4vw;background:rgba(255,253,250,.99);border-bottom:1px solid rgba(37,39,34,.12);transition:max-height .42s ease,opacity .28s ease,transform .32s ease,visibility .32s ease,padding .32s ease}.site-header.open .primary-nav{max-height:430px;opacity:1;visibility:visible;transform:none;padding:14px 4vw 24px}.primary-nav a{width:100%;height:auto;padding:15px 0;border-bottom:1px solid var(--line);font-size:13px}.primary-nav a::after{display:none}.header-actions{gap:4px}.menu-toggle{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;margin-left:4px;border:1px solid rgba(37,39,34,.24);background:none;cursor:pointer}.menu-toggle span,.menu-toggle::before,.menu-toggle::after{content:"";display:block;width:17px;height:1px;background:currentColor;transition:transform .25s ease,opacity .25s ease}.menu-toggle span{margin:4px 0}.site-header.open .menu-toggle::before{transform:translateY(5px) rotate(45deg)}.site-header.open .menu-toggle span{opacity:0}.site-header.open .menu-toggle::after{transform:translateY(-5px) rotate(-45deg)}.mobile-reserve{display:none}.program-hero-grid,.section-head,.program,.program-cta-grid{grid-template-columns:1fr;gap:30px}.program-hero-grid{min-height:390px;padding:72px 0 58px}.program-content{padding-top:64px}.price-grid{grid-template-columns:1fr 1fr}.two-col,.additional{grid-template-columns:1fr}.sig-top{grid-template-columns:1fr auto}.sig-price{grid-column:2}.footer-row{grid-template-columns:1fr 1fr}.footer-brand-block{grid-column:1/-1}.footer-menu-row{flex-wrap:wrap}}
+@media(max-width:720px){:root{--header-h:70px}.site-header{padding-inline:5vw}.logo{width:130px}.lang{font-size:11px}.lang button{min-width:36px;min-height:40px}.program-hero-grid{min-height:340px;padding:58px 0 48px;gap:24px}.title{font-size:54px}.intro{font-size:15px;line-height:1.8}.program-tabs-band{top:var(--header-h)}.tabs{min-height:58px;gap:24px}.tabs a{padding:21px 0 17px}.program-content{padding:54px 0 20px}.section{margin-bottom:72px}.section-head{gap:18px;padding-top:20px;margin-bottom:24px}.section-head h2{font-size:34px}.program{gap:22px;padding:25px 0}.price{padding:15px 13px;font-size:13px}.signature{padding:20px}.sig-top{gap:12px}.included span{font-size:11px;padding:7px 10px}.subcard{padding:20px}.program-cta{padding:64px 0 60px}.program-cta-grid{gap:26px}.footer-row{grid-template-columns:1fr;gap:28px}.footer-brand-block{grid-column:auto}.footer-menu-row{gap:11px 23px}.footer-copyright{text-align:left}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+<style>
+/* ===== AIRE FINAL DESIGN SYSTEM 2026-07 ===== */
+:root{
+  --bg:#f6f3ed;
+  --paper:#fdfbf7;
+  --ink:#242722;
+  --muted:#6b6f68;
+  --line:#d8d3ca;
+  --sand:#ded6c9;
+  --green:#102a24;
+  --gold:#b89a62;
+  --content-w:1460px;
+  --header-h:80px;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic","Segoe UI",sans-serif;
+  --font-serif:"Iowan Old Style","Baskerville","Times New Roman",serif;
+}
+html{scroll-padding-top:calc(var(--header-h) + 18px)}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{width:min(91vw,var(--content-w))}
+.site-header{height:var(--header-h);grid-template-columns:210px 1fr 220px;padding:0 3.5vw;background:rgba(253,251,247,.92);border-bottom-color:rgba(36,39,34,.10)}
+.primary-nav{gap:clamp(34px,4.1vw,70px);font-family:var(--font-sans);font-size:14px;font-weight:500;letter-spacing:.145em;line-height:1}
+.primary-nav a{height:32px;line-height:1;align-items:center}
+.logo{width:150px}
+.lang{font-size:13px;letter-spacing:.1em}
+.lang button{min-width:34px;min-height:38px}
+.serif,.title,.hero h1,.section-head h2,.program-name h3,.principles h2,.closing h2{font-family:var(--font-serif);font-weight:400;letter-spacing:-.025em}
+p{letter-spacing:-.01em}
+footer{background:var(--green)!important}
+@media(max-width:1100px){
+  .site-header{grid-template-columns:1fr auto;padding-inline:4vw}
+}
+@media(max-width:720px){
+  :root{--header-h:70px}
+  body{font-size:15px;line-height:1.76}
+  .site-header{padding-inline:5vw}
+  .logo{width:130px}
+  .primary-nav a{font-size:13px;min-height:44px}
+}
+
+/* Programs final typography, color and rhythm */
+.program-hero{background:var(--paper);padding:96px 0 86px}
+.program-hero .title{font-size:clamp(60px,6.2vw,96px);line-height:.94}
+.program-hero .intro{font-size:16px;line-height:1.82}
+.program-tabs-band{background:var(--green);border-color:rgba(255,255,255,.16)}
+.tabs a{color:rgba(247,243,235,.72);font-size:13px;letter-spacing:.14em;min-height:52px;display:inline-flex;align-items:center}
+.tabs a:hover,.tabs a.active{color:#f7f3eb}
+.tabs a::after{background:var(--gold)}
+.program-content{background:var(--bg);padding:90px 0 96px}
+.section{padding:0 0 92px}
+.section+.section{padding-top:92px;border-top:1px solid var(--line)}
+.section-head{margin-bottom:46px}
+.section-head h2{font-family:var(--font-serif);font-size:clamp(43px,4vw,66px);font-weight:400;line-height:1.02;letter-spacing:-.025em}
+.section-head p{font-size:15px;line-height:1.78}
+.program{gap:clamp(38px,5vw,82px)}
+.program-name h3{font-size:clamp(31px,2.8vw,46px);line-height:1.05}
+.program-name .desc{font-size:15px;line-height:1.78}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.18em}
+.price,.sig-price{color:var(--green);font-weight:600}
+.subcard,.signature{background:var(--paper);border-color:var(--line)}
+.program-cta{background:var(--green);padding:92px 0 86px}
+.program-cta h2{font-size:clamp(42px,4vw,64px);line-height:1.04;color:#f7f3eb}
+.program-cta-copy p{font-size:15px;line-height:1.82;color:rgba(247,243,235,.78)}
+.program-cta .text-link{color:#f7f3eb}
+@media(max-width:720px){
+ .program-hero{padding:68px 0 62px}.program-hero .title{font-size:52px}.program-hero .intro{font-size:15px}
+ .tabs{overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs a{white-space:nowrap;min-height:48px}
+ .program-content{padding:68px 0 72px}.section{padding-bottom:68px}.section+.section{padding-top:68px}
+ .section-head{margin-bottom:34px}.section-head h2{font-size:40px}.program-name h3{font-size:34px}
+ .program-cta{padding:70px 0 66px}.program-cta h2{font-size:40px}
+}
+</style>
+<link rel="canonical" href="https://airespaseoul.com/menu.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#102a24">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Programs | AIRE SPA & AESTHETIC">
+<meta property="og:description" content="AIRE SPA & AESTHETIC의 바디 케어와 페이셜 프로그램을 확인하세요.">
+<meta property="og:url" content="https://airespaseoul.com/menu.html">
+<meta property="og:image" content="https://airespaseoul.com/og-image.jpg">
+<meta property="og:site_name" content="AIRE SPA & AESTHETIC">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Programs | AIRE SPA & AESTHETIC">
+<meta name="twitter:description" content="AIRE SPA & AESTHETIC의 바디 케어와 페이셜 프로그램을 확인하세요.">
+<meta name="twitter:image" content="https://airespaseoul.com/og-image.jpg">
+</head>
+<body><header class="site-header">
+<a class="logo" href="index.html#top"><img decoding="async" fetchpriority="high" alt="AIRE SPA &amp; AESTHETIC" src="logo-578892946e17.png"/></a>
+<nav aria-label="Main navigation" class="primary-nav" id="primary-nav"><a data-nav-key="about" href="about.html">ABOUT</a><a aria-current="page" class="active" data-nav-key="programs" href="menu.html">PROGRAMS</a><a data-nav-key="space" href="index.html#space">SPACE</a><a data-nav-key="location" href="index.html#visit">LOCATION</a><a data-nav-key="reservation" href="index.html#reservation">RESERVATION</a></nav>
+<div class="header-actions">
+<div class="lang">
+<button class="active" data-lang="ko" type="button">KR</button>
+<button data-lang="en" type="button">EN</button>
+<button data-lang="ja" type="button">JP</button>
+</div>
+<a class="mobile-reserve" data-i18n="navReserve" data-nav-key="reservation" href="index.html#reservation">예약</a>
+<button aria-controls="primary-nav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" type="button"><span></span></button>
+</div>
+</header><main id="top"><section class="program-hero"><div class="wrap program-hero-grid"><h1 class="title">Programs</h1><p class="intro" id="intro"></p></div></section><div class="program-tabs-band"><div class="wrap"><nav aria-label="Program categories" class="tabs"><a href="#body">BODY CARE</a><a href="#couple">COUPLE CARE</a><a href="#facial">FACIAL &amp; ADDITIONAL CARE</a></nav></div></div><section class="program-content"><div class="wrap"><div id="content"></div></div></section><section class="program-cta"><div class="wrap program-cta-grid"><h2 class="serif reveal" id="ctaTitle">예약 전 프로그램을 확인해 주세요.</h2><div class="program-cta-copy reveal"><p id="ctaText">프로그램 선택이 어려운 경우 예약 문의 시 이용 목적과 원하는 시간을 알려주세요.</p><a class="text-link" href="index.html#reservation" id="ctaLink">RESERVATION</a></div></div></section></main><footer>
+<div class="footer-shell">
+<div class="footer-row">
+<div class="footer-brand-block">
+<img decoding="async" fetchpriority="high" alt="AIRE SPA &amp; AESTHETIC" src="logo-578892946e17.png"/>
+<p id="footerAddress">서울특별시 강남구 테헤란로78길 14-15, 2층</p>
+</div>
+<div class="footer-menu-block">
+<h3>MENU</h3>
+<nav aria-label="Footer" class="footer-menu-row">
+<a href="about.html">ABOUT</a><a href="menu.html">PROGRAMS</a><a href="index.html#space">SPACE</a><a href="index.html#visit">LOCATION</a><a href="index.html#reservation">RESERVATION</a>
+</nav>
+</div>
+<div class="footer-reservation-block">
+<h3>RESERVATION</h3>
+<div class="footer-reservation-lines">
+<a href="tel:025645455">02-564-5455</a><a href="tel:01024975455">010-2497-5455</a>
+<a class="footer-instagram-row" href="https://www.instagram.com/aire.spa.aesthetic/" rel="noopener" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 24 24"><defs><radialgradient cx="30%" cy="105%" id="footerInstagramGradient" r="120%"><stop offset="0%" stop-color="#ffd600"></stop><stop offset="28%" stop-color="#ff7a00"></stop><stop offset="52%" stop-color="#ff0169"></stop><stop offset="78%" stop-color="#d300c5"></stop><stop offset="100%" stop-color="#7638fa"></stop></radialgradient></defs><rect fill="url(#footerInstagramGradient)" height="20" rx="6" width="20" x="2" y="2"></rect><rect fill="none" height="11.6" rx="3.5" stroke="#fff" stroke-width="1.75" width="11.6" x="6.2" y="6.2"></rect><circle cx="12" cy="12" fill="none" r="2.8" stroke="#fff" stroke-width="1.75"></circle><circle cx="16.4" cy="7.7" fill="#fff" r=".9"></circle></svg>
+<span>@aire.spa.aesthetic</span>
+</a>
+</div>
+</div>
+</div>
+<div class="footer-copyright">© 2026 AIRE SPA &amp; AESTHETIC. ALL RIGHTS RESERVED.</div>
+</div>
+</footer><script>function getSavedMenuLang(){try{return localStorage.getItem('aire-lang')||'ko'}catch(e){return 'ko'}}
+
+const T={
+ko:{intro:'관리 시간과 구성에 따라 프로그램을 나누어 안내합니다. 시그니처 코스는 바디케어 아래에서 코스별 포함 항목을 확인할 수 있습니다.',bodyTitle:'BODY CARE',bodyLead:'기본 바디케어부터 여러 관리가 함께 구성된 시그니처 코스까지 확인하실 수 있습니다.',bodyName:'AIRE BODY CARE COURSE',bodyDesc:'전신을 관리하는 아이레스파의 기본 바디케어 프로그램입니다.',add30:'30분 추가 시 50,000원',sigTitle:'AIRE SIGNATURE',sigDesc:'바디케어와 여러 관리가 함께 구성된 장시간 프로그램입니다. 코스마다 포함 항목이 다릅니다.',coupleTitle:'COUPLE CARE',coupleLead:'두 분이 같은 공간에서 함께 받는 전신 바디케어 프로그램입니다.',coupleName:'AIRE COUPLE CARE COURSE',coupleDesc:'2인실에서 두 분이 함께 받는 프로그램이며 가격은 2인 기준입니다.',facialTitle:'FACIAL & ADDITIONAL CARE',facialLead:'페이셜과 페이스·바디 구성, 입욕과 스크럽 추가 관리를 한곳에서 확인할 수 있습니다.',facial:'FACIAL CARE',faceBody:'FACE & BODY CARE',additional:'ADDITIONAL',spaDesc:'전신 관리 전에 이용하는 30분 입욕 프로그램입니다.',scrubDesc:'아로마 오일과 솔트·슈가를 사용하는 스크럽 프로그램입니다.',process1:'클렌징 · 각질 제거 · 1차 팩 · 매뉴얼 테크닉 · 2차 팩 · 두피 관리 · 마무리',process2:'바디케어 · 클렌징 · 각질 제거 · 1차 팩 · 매뉴얼 테크닉 · 2차 팩 · 마무리',spa:'SPA',scrub:'AROMA SUGAR & SALT SCRUB',ctaTitle:'예약 전 프로그램을 확인해 주세요.',ctaText:'프로그램 선택이 어려운 경우 예약 문의 시 이용 목적과 원하는 시간을 알려주세요.',ctaLink:'RESERVATION',footerAddress:'서울특별시 강남구 테헤란로78길 14-15, 2층'},
+en:{intro:'Programs are arranged by care type, duration and composition. Signature courses appear under Body Care with the included services listed for each course.',bodyTitle:'BODY CARE',bodyLead:'From the standard body care program to longer signature combinations.',bodyName:'AIRE BODY CARE COURSE',bodyDesc:'AIRE’s standard full-body care program.',add30:'Additional 30 min · KRW 50,000',sigTitle:'AIRE SIGNATURE',sigDesc:'Long-form programs combining body care with selected services. Inclusions differ by course.',coupleTitle:'COUPLE CARE',coupleLead:'Full-body care for two guests in the same room.',coupleName:'AIRE COUPLE CARE COURSE',coupleDesc:'Provided in a private couple room. Prices are for two guests.',facialTitle:'FACIAL & ADDITIONAL CARE',facialLead:'Facial, face-and-body combinations, bathing and scrub options.',facial:'FACIAL CARE',faceBody:'FACE & BODY CARE',additional:'ADDITIONAL',spaDesc:'A 30-minute bathing program before full-body care.',scrubDesc:'A scrub program using aroma oil, salt and sugar.',process1:'Cleansing · Exfoliation · First mask · Manual technique · Second mask · Scalp care · Finish',process2:'Body care · Cleansing · Exfoliation · First mask · Manual technique · Second mask · Finish',spa:'SPA',scrub:'AROMA SUGAR & SALT SCRUB',ctaTitle:'Review the programs before booking.',ctaText:'When making an inquiry, tell us the type of care and the time you are considering.',ctaLink:'RESERVATION',footerAddress:'2F, 14-15 Teheran-ro 78-gil, Gangnam-gu, Seoul'},
+ja:{intro:'ケアの種類、時間、構成ごとにプログラムをご案内します。シグネチャーコースはボディケア内で、各コースの内容をご確認いただけます。',bodyTitle:'BODY CARE',bodyLead:'基本のボディケアから複数のケアを組み合わせたシグネチャーコースまでご案内します。',bodyName:'AIRE BODY CARE COURSE',bodyDesc:'全身を管理するAIREの基本ボディケアプログラムです。',add30:'30分追加 · 50,000ウォン',sigTitle:'AIRE SIGNATURE',sigDesc:'ボディケアと複数のケアを組み合わせた長時間プログラムです。コースごとに内容が異なります。',coupleTitle:'COUPLE CARE',coupleLead:'お二人が同じ空間で受ける全身ボディケアプログラムです。',coupleName:'AIRE COUPLE CARE COURSE',coupleDesc:'2人用個室で行い、料金は2名様基準です。',facialTitle:'FACIAL & ADDITIONAL CARE',facialLead:'フェイシャル、フェイス＆ボディ、入浴、スクラブをご案内します。',facial:'FACIAL CARE',faceBody:'FACE & BODY CARE',additional:'ADDITIONAL',spaDesc:'全身ケア前に利用する30分の入浴プログラムです。',scrubDesc:'アロマオイル、ソルト、シュガーを使用するスクラブプログラムです。',process1:'クレンジング · 角質ケア · 1次パック · マニュアルテクニック · 2次パック · 頭皮ケア · 仕上げ',process2:'ボディケア · クレンジング · 角質ケア · 1次パック · マニュアルテクニック · 2次パック · 仕上げ',spa:'SPA',scrub:'AROMA SUGAR & SALT SCRUB',ctaTitle:'ご予約前にプログラムをご確認ください。',ctaText:'プログラム選びが難しい場合は、ご希望の内容と時間を予約時にお知らせください。',ctaLink:'予約',footerAddress:'ソウル特別市 江南区 テヘラン路78キル 14-15、2階'}
+};
+const prices={ko:'원',en:'KRW ',ja:'ウォン'};
+function money(l,n){return l==='en'?'KRW '+n:n+(l==='ja'?'ウォン':'원')}
+function priceGrid(l,rows){return `<div class="price-grid">${rows.map(r=>`<div class="price"><span>${r[0]}</span><strong>${money(l,r[1])}</strong></div>`).join('')}</div>`}
+function sig(l,name,time,price,items){return `<article class="signature"><div class="sig-top"><h4>${name}</h4><span class="sig-time">${time}</span><strong class="sig-price">${money(l,price)}</strong></div><div class="included">${items.map(x=>`<span>${x}</span>`).join('')}</div></article>`}
+function render(l){
+ const t=T[l]; document.documentElement.lang=l==='ja'?'ja':l; document.getElementById('intro').textContent=t.intro;
+ const mins=l==='ja'?'分':' min';
+ const bodyRows=[['60'+mins,'120,000'],['90'+mins,'160,000'],['120'+mins,'200,000'],['150'+mins,'250,000']];
+ const coupleRows=[['90'+mins,'310,000'],['120'+mins,'390,000']];
+ const labels=l==='ko'?{body:'전신 바디케어',scrub:'솔트 스크럽',mask:'마스크팩',lift:'리프팅 트리트먼트 (FACE)',energy:'에너지 리추얼',spa:'스파 입욕',head:'헤드 스파'}:l==='ja'?{body:'全身ボディケア',scrub:'ソルトスクラブ',mask:'マスクパック',lift:'リフティングトリートメント（FACE）',energy:'エナジーリチュアル',spa:'スパ入浴',head:'ヘッドスパ'}:{body:'Full Body Care',scrub:'Salt Scrub',mask:'Facial Mask',lift:'Lifting Treatment (FACE)',energy:'Energy Ritual',spa:'Spa Bathing',head:'Head Spa'};
+ document.getElementById('content').innerHTML=`
+ <section class="section" id="body"><div class="section-head"><h2>${t.bodyTitle}</h2><p>${t.bodyLead}</p></div>
+  <article class="program"><div class="program-name"><div class="eyebrow">BODY CARE</div><h3>${t.bodyName}</h3><p class="desc">${t.bodyDesc}</p></div><div>${priceGrid(l,bodyRows)}<div class="note">${t.add30}</div></div></article>
+  <article class="program"><div class="program-name"><div class="eyebrow">SIGNATURE</div><h3>${t.sigTitle}</h3><p class="desc">${t.sigDesc}</p></div><div class="signature-list">
+   ${sig(l,'A SIGNATURE','150'+mins,'270,000',[labels.body,labels.scrub,labels.mask,labels.lift])}
+   ${sig(l,'B SIGNATURE','180'+mins,'360,000',[labels.body,labels.scrub,labels.energy])}
+   ${sig(l,'C SIGNATURE','240'+mins,'480,000',[labels.spa,labels.body,labels.scrub,labels.energy,labels.head])}
+  </div></article></section>
+ <section class="section" id="couple"><div class="section-head"><h2>${t.coupleTitle}</h2><p>${t.coupleLead}</p></div><article class="program"><div class="program-name"><div class="eyebrow">COUPLE CARE</div><h3>${t.coupleName}</h3><p class="desc">${t.coupleDesc}</p></div><div>${priceGrid(l,coupleRows)}</div></article></section>
+ <section class="section" id="facial"><div class="section-head"><h2>${t.facialTitle}</h2><p>${t.facialLead}</p></div>
+  <div class="two-col">
+   <article class="subcard"><h4>${t.facial}</h4><p class="process">${t.process1}</p>${priceGrid(l,[[l==='ko'?'에너지 리추얼 · 60분':l==='ja'?'エナジーリチュアル · 60分':'Energy Ritual · 60 min','120,000']])}</article>
+   <article class="subcard"><h4>${t.faceBody}</h4><p class="process">${t.process2}</p>${priceGrid(l,[[l==='ko'?'에너지 리추얼 · 90분':l==='ja'?'エナジーリチュアル · 90分':'Energy Ritual · 90 min','170,000'],[l==='ko'?'에너지 컴플리트 · 150분':l==='ja'?'エナジーコンプリート · 150分':'Energy Complete · 150 min','270,000'],[l==='ko'?'라인 & 볼륨 리추얼 · 90분':l==='ja'?'ライン＆ボリューム リチュアル · 90分':'Line & Volume Ritual · 90 min','180,000'],[l==='ko'?'라인 & 볼륨 컴플리트 · 150분':l==='ja'?'ライン＆ボリューム コンプリート · 150分':'Line & Volume Complete · 150 min','280,000']])}</article>
+  </div>
+  <article class="program"><div class="program-name"><div class="eyebrow">ADDITIONAL</div><h3>${t.additional}</h3></div><div class="additional"><article class="subcard"><h4>${t.spa}</h4><p class="desc">${t.spaDesc}</p>${priceGrid(l,[['30'+mins,'50,000']])}</article><article class="subcard"><h4>${t.scrub}</h4><p class="desc">${t.scrubDesc}</p>${priceGrid(l,[[l==='ko'?'후면 30분':l==='ja'?'背面 30分':'Back 30 min','50,000'],[l==='ko'?'전신 60분':l==='ja'?'全身 60分':'Full Body 60 min','80,000']])}</article></div></article>
+ </section>`;
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l)); try{localStorage.setItem('aire-lang',l)}catch(e){};
+}
+
+
+
+const menuNavLabels={ko:{about:'ABOUT',programs:'프로그램',space:'공간',location:'위치',reservation:'예약'},en:{about:'ABOUT',programs:'PROGRAMS',space:'SPACE',location:'LOCATION',reservation:'RESERVATION'},ja:{about:'ABOUT',programs:'プログラム',space:'施設',location:'アクセス',reservation:'予約'}};
+let menuRevealObserver=null;
+let menuTabObserver=null;
+function initMenuReveals(){
+  if(menuRevealObserver)menuRevealObserver.disconnect();
+  menuRevealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');menuRevealObserver.unobserve(entry.target)}})},{threshold:.08});
+  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el=>menuRevealObserver.observe(el));
+}
+function initMenuTabs(){
+  if(menuTabObserver)menuTabObserver.disconnect();
+  const links=[...document.querySelectorAll('.tabs a')];
+  menuTabObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))})},{rootMargin:'-24% 0px -66% 0px'});
+  ['body','couple','facial'].forEach(id=>{const el=document.getElementById(id);if(el)menuTabObserver.observe(el)});
+}
+function postMenuRender(l){
+  const t=T[l]||T.ko;
+  document.getElementById('ctaTitle').textContent=t.ctaTitle;
+  document.getElementById('ctaText').textContent=t.ctaText;
+  document.getElementById('ctaLink').textContent=t.ctaLink;
+  document.getElementById('footerAddress').textContent=t.footerAddress;
+  document.querySelectorAll('[data-nav-key]').forEach(el=>{const v=menuNavLabels[l]?.[el.dataset.navKey];if(v)el.textContent=v});
+  document.querySelectorAll('#content .section-head,#content .program,#content .subcard,#content .signature').forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',`${Math.min(i%3,2)*65}ms`)});
+  initMenuReveals();
+  initMenuTabs();
+}
+const baseMenuRender=render;
+render=function(l){baseMenuRender(l);postMenuRender(l)};
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>render(b.dataset.lang));
+render(getSavedMenuLang());
+const menuHeader=document.querySelector('.site-header');
+const menuToggle=document.querySelector('.menu-toggle');
+function setMenuNav(open){menuHeader.classList.toggle('open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기')}
+menuToggle.addEventListener('click',()=>setMenuNav(!menuHeader.classList.contains('open')));
+document.querySelectorAll('.primary-nav a').forEach(a=>a.addEventListener('click',()=>setMenuNav(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenuNav(false)});
+const menuHeaderState=()=>menuHeader.classList.toggle('scrolled',window.scrollY>18);
+menuHeaderState();window.addEventListener('scroll',menuHeaderState,{passive:true});
+</script></body></html>
