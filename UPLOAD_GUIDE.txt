@@ -1,0 +1,15 @@
+AIRE SPA SEO 최종 패키지
+
+GitHub 저장소 루트에 이 폴더의 파일을 모두 업로드하세요.
+- index.html은 기존 파일을 교체합니다.
+- CNAME, sitemap.xml, robots.txt는 같은 이름의 기존 파일을 교체해도 내용이 동일합니다.
+- 이미지와 site.webmanifest는 새 파일입니다.
+
+업로드 후 확인 주소:
+https://airespaseoul.com/favicon.ico
+https://airespaseoul.com/og-image.jpg
+https://airespaseoul.com/site.webmanifest
+https://airespaseoul.com/sitemap.xml
+https://airespaseoul.com/robots.txt
+
+UPDATED: og-image.jpg now uses the approved AIRE spa interior image with bright white logo lettering (1200x630).

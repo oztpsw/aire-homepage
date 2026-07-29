@@ -1,0 +1,25 @@
+{
+  "name": "AIRE SPA & AESTHETIC",
+  "short_name": "AIRE SPA",
+  "description": "서울 강남에 위치한 AIRE SPA & AESTHETIC 공식 홈페이지",
+  "lang": "ko-KR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#102a24",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
