@@ -216,6 +216,7 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 :root{--content-w:1460px;--header-h:80px}
 .wrap{width:min(91vw,var(--content-w))}
 h1,h2,h3,h4,p{word-break:keep-all;overflow-wrap:break-word}
+html[lang="ja"] h1,html[lang="ja"] h2,html[lang="ja"] h3,html[lang="ja"] h4,html[lang="ja"] p{word-break:normal;overflow-wrap:anywhere}
 .site-header{grid-template-columns:210px 1fr 220px;padding:0 3.5vw;background:rgba(255,253,250,.90);transition:background-color .35s ease,box-shadow .35s ease,border-color .35s ease}
 .site-header.scrolled,.site-header.open{background:rgba(255,253,250,.985);border-bottom-color:rgba(37,39,34,.13);box-shadow:0 12px 34px rgba(26,31,27,.055)}
 .primary-nav{gap:clamp(34px,4.1vw,70px);font-size:14px;letter-spacing:.15em}
