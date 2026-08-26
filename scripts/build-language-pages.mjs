@@ -11,32 +11,32 @@ const files = {
 const metadata = {
   index: {
     en: {
-      title: 'AIRE SPA & AESTHETIC',
-      description: 'AIRE SPA is a private spa located in Gangnam, Seoul. All treatments are available by reservation, and each room is operated as an independent private space. We offer body and facial treatments in a calm setting.'
+      title: 'Private Spa in Gangnam, Seoul | AIRE SPA & AESTHETIC',
+      description: 'AIRE SPA is a reservation-only private spa in Gangnam, Seoul, offering body massage and facial treatments in private rooms with individual shower areas.'
     },
     ja: {
-      title: 'AIRE SPA & AESTHETIC',
-      description: 'アイレスパは、ソウル・江南に位置するプライベートスパです。すべての施術は予約制で、各ルームは独立した空間として運営しています。落ち着いた空間で、ボディとフェイシャルの施術をご提供します。'
+      title: 'ソウル・江南のプライベートスパ | AIRE SPA',
+      description: 'アイレスパはソウル・江南の予約制プライベートスパです。個別シャワーを備えた個室で、ボディマッサージとフェイシャルケアをご提供します。'
     }
   },
   about: {
     en: {
-      title: 'About | AIRE SPA & AESTHETIC',
-      description: 'Body and facial care in Gangnam, Seoul. All visits are by reservation, with private rooms for one or two guests.'
+      title: 'Private Spa Rooms in Gangnam | About AIRE SPA',
+      description: 'Learn about AIRE SPA in Gangnam, Seoul: reservation-only body and facial care in private single and couple rooms, each with its own shower area.'
     },
     ja: {
-      title: 'About | AIRE SPA & AESTHETIC',
-      description: 'ソウル・江南でボディケアとフェイシャルを行っています。すべて予約制で、1名様または2名様用の個室をご利用いただきます。'
+      title: '江南の個室スパ | AIRE SPAについて',
+      description: 'ソウル・江南のAIRE SPAは完全予約制です。個別シャワーを備えた1名様用・2名様用の個室で、ボディとフェイシャルのケアをご提供します。'
     }
   },
   menu: {
     en: {
-      title: 'Programs | AIRE SPA & AESTHETIC',
-      description: 'Programs are arranged by care type, duration and composition. Signature courses appear under Body Care with the included services listed for each course.'
+      title: 'Body Massage & Facial Care in Gangnam | AIRE SPA',
+      description: 'View AIRE SPA body massage, couple care and facial programs in Gangnam, Seoul, with treatment durations, inclusions and prices in Korean won.'
     },
     ja: {
-      title: 'Programs | AIRE SPA & AESTHETIC',
-      description: 'ケアの種類、時間、構成ごとにプログラムをご案内します。シグネチャーコースはボディケア内で、各コースの内容をご確認いただけます。'
+      title: '江南のボディマッサージ・フェイシャル | AIRE SPA',
+      description: 'ソウル・江南のAIRE SPAが提供するボディマッサージ、カップルケア、フェイシャルの施術時間・内容・料金をご案内します。'
     }
   }
 };
