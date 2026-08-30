@@ -24,7 +24,8 @@ for (const file of allFiles) {
     .map(match => match[1])
     .filter(link => !/^(?:https?:|tel:|\/)/.test(link));
   for (const link of localLinks) {
-    if (!fs.existsSync(link)) throw new Error(`${file}: missing local target ${link}`);
+    const localPath = link.split(/[?#]/, 1)[0];
+    if (!fs.existsSync(localPath)) throw new Error(`${file}: missing local target ${link}`);
   }
   const alternates = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
   if (alternates.length !== 4) throw new Error(`${file}: expected 4 hreflang links, found ${alternates.length}`);
