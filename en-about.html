@@ -370,5 +370,6 @@ setLang('en');
 const languagePageUrls={"ko":"about.html","en":"en-about.html","ja":"ja-about.html"};
 document.querySelectorAll('.lang button').forEach(button=>button.addEventListener('click',()=>{const target=languagePageUrls[button.dataset.lang];if(target&&location.pathname.split('/').pop()!==target)location.href=target},{capture:true}));
 </script>
+<script src="analytics-consent.js"></script>
 </body>
 </html>

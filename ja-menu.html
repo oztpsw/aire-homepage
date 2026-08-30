@@ -257,4 +257,4 @@ menuHeaderState();window.addEventListener('scroll',menuHeaderState,{passive:true
 </script><script>
 const languagePageUrls={"ko":"menu.html","en":"en-menu.html","ja":"ja-menu.html"};
 document.querySelectorAll('.lang button').forEach(button=>button.addEventListener('click',()=>{const target=languagePageUrls[button.dataset.lang];if(target&&location.pathname.split('/').pop()!==target)location.href=target},{capture:true}));
-</script></body></html>
+</script><script src="analytics-consent.js"></script></body></html>

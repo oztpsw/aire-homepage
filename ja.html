@@ -633,5 +633,6 @@ if(!reduceMotion){
 const languagePageUrls={"ko":"index.html","en":"en.html","ja":"ja.html"};
 document.querySelectorAll('.lang button').forEach(button=>button.addEventListener('click',()=>{const target=languagePageUrls[button.dataset.lang];if(target&&location.pathname.split('/').pop()!==target)location.href=target},{capture:true}));
 </script>
+<script src="analytics-consent.js"></script>
 </body>
 </html>
