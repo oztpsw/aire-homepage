@@ -7,6 +7,7 @@ const groups = [
   ['menu.html', 'en-menu.html', 'ja-menu.html']
 ];
 const allFiles = groups.flat();
+const landingPages = ['private-spa-gangnam.html'];
 
 for (const group of groups) {
   const cssHashes = group.map(file => {
@@ -35,9 +36,27 @@ for (const file of allFiles) {
   }
 }
 
+for (const file of landingPages) {
+  const html = fs.readFileSync(file, 'utf8');
+  const localLinks = [...html.matchAll(/(?:src|href)="([^"#]+)(?:#[^"]*)?"/g)]
+    .map(match => match[1])
+    .filter(link => !/^(?:https?:|tel:|\/)/.test(link));
+  for (const link of localLinks) {
+    const localPath = link.split(/[?#]/, 1)[0];
+    if (!fs.existsSync(localPath)) throw new Error(`${file}: missing local target ${link}`);
+  }
+  const url = `https://airespaseoul.com/${file}`;
+  if (!html.includes(`<link rel="canonical" href="${url}">`)) throw new Error(`${file}: canonical URL mismatch`);
+  if (!html.includes(`<link rel="alternate" hreflang="en" href="${url}">`)) throw new Error(`${file}: missing English hreflang`);
+}
+
 const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
 for (const file of allFiles) {
   const url = file === 'index.html' ? 'https://airespaseoul.com/' : `https://airespaseoul.com/${file}`;
+  if (!sitemap.includes(`<loc>${url}</loc>`)) throw new Error(`sitemap missing ${url}`);
+}
+for (const file of landingPages) {
+  const url = `https://airespaseoul.com/${file}`;
   if (!sitemap.includes(`<loc>${url}</loc>`)) throw new Error(`sitemap missing ${url}`);
 }
 
