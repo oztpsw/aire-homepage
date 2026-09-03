@@ -7,7 +7,7 @@ const groups = [
   ['menu.html', 'en-menu.html', 'ja-menu.html']
 ];
 const allFiles = groups.flat();
-const landingPages = ['private-spa-gangnam.html'];
+const landingPages = ['private-spa-gangnam.html', 'private-spa-gangnam-ko.html', 'private-spa-gangnam-ja.html'];
 
 for (const group of groups) {
   const cssHashes = group.map(file => {
@@ -47,7 +47,11 @@ for (const file of landingPages) {
   }
   const url = `https://airespaseoul.com/${file}`;
   if (!html.includes(`<link rel="canonical" href="${url}">`)) throw new Error(`${file}: canonical URL mismatch`);
-  if (!html.includes(`<link rel="alternate" hreflang="en" href="${url}">`)) throw new Error(`${file}: missing English hreflang`);
+  const alternates = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
+  if (alternates.length !== 4) throw new Error(`${file}: expected 4 hreflang links, found ${alternates.length}`);
+  for (const language of ['ko', 'en', 'ja', 'x-default']) {
+    if (!alternates.some(match => match[1] === language)) throw new Error(`${file}: missing hreflang ${language}`);
+  }
 }
 
 const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
