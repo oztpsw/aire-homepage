@@ -11,8 +11,8 @@ const files = {
 const metadata = {
   index: {
     en: {
-      title: 'Private Spa in Gangnam, Seoul | AIRE SPA & AESTHETIC',
-      description: 'AIRE SPA is a reservation-only private spa in Gangnam, Seoul, offering body massage and facial treatments in private rooms with individual shower areas.'
+      title: 'AIRE SPA & AESTHETIC | Official Website',
+      description: 'Official website of AIRE SPA & AESTHETIC in Gangnam, Seoul. View private rooms, body and facial care programs, location and reservation information.'
     },
     ja: {
       title: 'ソウル・江南のプライベートスパ | AIRE SPA',
