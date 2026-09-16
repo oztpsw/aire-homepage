@@ -117,7 +117,19 @@ img,video{display:block;width:100%;height:100%;object-fit:cover}
 .reservation-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding-top:5px}
 .reservation-lines a{display:block;width:max-content;max-width:100%;font-size:clamp(20px,2vw,27px);line-height:1.45}
 .reservation-note{font-size:12px;line-height:1.7;color:#5f625c;margin:11px 0 0}
-.booking-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:25px}.booking-option{display:flex;min-height:68px;padding:14px 16px;border:1px solid rgba(37,39,34,.3);align-items:center;justify-content:space-between;gap:12px;transition:background .25s,color .25s,border-color .25s}.booking-option strong{font-size:14px;font-weight:500}.booking-option span{font-size:16px}.booking-option.primary{background:var(--green);border-color:var(--green);color:#f2ece0}.booking-option:hover{background:var(--green);border-color:var(--green);color:#f2ece0}
+.booking-options{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:25px}
+.booking-option{display:flex;min-height:96px;padding:18px 20px;align-items:center;justify-content:space-between;gap:14px;border:1px solid rgba(37,39,34,.28);background:var(--paper);transition:background .25s,border-color .25s,box-shadow .25s,transform .25s}
+.booking-copy{display:flex;flex-direction:column;gap:8px;min-width:0}
+.booking-copy strong{font-size:17px;font-weight:500;line-height:1.3}
+.booking-copy small{font-size:12px;line-height:1.5;color:#5f625c}
+.booking-arrow{display:grid;place-items:center;width:36px;height:36px;flex:0 0 36px;border:1px solid rgba(37,39,34,.25);border-radius:50%;font-size:18px;line-height:1;transition:transform .25s,background .25s}
+.booking-option.primary{background:var(--green);border-color:var(--green);color:#f2ece0}
+.booking-option.primary .booking-copy small{color:rgba(242,236,224,.78)}
+.booking-option.primary .booking-arrow{border-color:rgba(242,236,224,.48)}
+.booking-option:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:0 9px 22px rgba(16,42,36,.11)}
+.booking-option:hover .booking-arrow{transform:translate(2px,-2px);background:rgba(16,42,36,.07)}
+.booking-option.primary:hover .booking-arrow{background:rgba(242,236,224,.13)}
+.booking-option:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .instagram,.whatsapp{display:flex!important;align-items:center;gap:11px}
 .instagram svg,.whatsapp img{width:22px;height:22px;flex:0 0 22px;object-fit:contain}
 .ig-bg{fill:url(#instagramGradient)}.ig-mark{fill:none;stroke:#fff;stroke-width:1.75}.ig-dot{fill:#fff}
@@ -133,6 +145,8 @@ footer{background:var(--green);color:#ece5d8;padding:36px 4vw 19px}
 .footer-shell{max-width:1500px;margin:0 auto}
 .footer-row{display:grid;grid-template-columns:minmax(240px,1fr) minmax(560px,2.1fr) minmax(245px,.9fr);gap:3.5vw;align-items:start}
 .footer-brand-block img{width:230px;max-width:100%;height:auto;object-fit:contain}
+.footer-logo{position:relative;width:230px;max-width:100%}
+.footer-logo .footer-logo-text{position:absolute;inset:0;filter:brightness(0) invert(1);clip-path:inset(0 0 0 42%)}
 .footer-brand-block p{margin:14px 0 0;font-size:13px;line-height:1.6;color:rgba(236,229,216,.72)}
 .footer-menu-block h3,.footer-reservation-block h3{margin:0 0 16px;height:20px;display:flex;align-items:center;font-size:13px;line-height:20px;letter-spacing:.16em;font-weight:500;color:var(--gold)}
 .footer-menu-row{display:flex;flex-wrap:nowrap;gap:clamp(24px,3vw,54px);align-items:center}
@@ -202,7 +216,7 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
   .space-detail-card{height:220px}
   .contact-zone{padding:68px 0 62px}
   .reservation-item{grid-template-columns:1fr;gap:9px}
-  .booking-options{grid-template-columns:1fr;gap:8px}.booking-option{min-height:58px;padding:12px 14px}
+  .booking-options{gap:9px}.booking-option{min-height:94px;padding:16px 17px}.booking-copy strong{font-size:16px}.booking-arrow{width:34px;height:34px;flex-basis:34px}
   .map-frame{height:290px}
   .footer-row{grid-template-columns:1fr;gap:28px}
   .footer-menu-row{gap:11px 23px}
@@ -398,8 +412,8 @@ footer{background:var(--green)!important}
 <nav aria-label="Main navigation" class="primary-nav" id="primary-nav"><a data-nav-key="about" href="ja-about.html">ABOUT</a><a data-i18n="navPrograms" data-nav-key="programs" href="ja-menu.html">プログラム</a><a data-i18n="navSpace" data-nav-key="space" href="#space">施設</a><a data-i18n="navLocation" data-nav-key="location" href="#visit">アクセス</a><a data-i18n="navReserve" data-nav-key="reservation" href="#reservation">予約</a></nav>
 <div class="header-actions">
 <div class="lang">
-<button class="active" data-lang="ko" type="button">KR</button>
-<button data-lang="en" type="button">EN</button>
+<button class="active" data-lang="en" type="button">EN</button>
+<button data-lang="ko" type="button">KR</button>
 <button data-lang="ja" type="button">JP</button>
 </div>
 <a class="mobile-reserve" data-i18n="navReserve" data-nav-key="reservation" href="#reservation">예약</a>
@@ -502,8 +516,8 @@ footer{background:var(--green)!important}
 <div class="contact-block reveal" id="reservation">
 <h2 class="serif" data-i18n="reservationTitle">予約</h2>
 <div class="booking-options">
-<a class="booking-option" href="https://m.booking.naver.com/booking/13/bizes/1422502/items/7290567" rel="noopener" target="_blank"><strong data-i18n="naverBooking">NAVER予約</strong><span aria-hidden="true">↗</span></a>
-<a class="booking-option primary" data-direct-booking href="https://aire-spa-reservation.aire-spa-reservation.workers.dev/book?lang=ja"><strong data-i18n="directBooking">AIRE SPA 直接予約</strong><span aria-hidden="true">→</span></a>
+<a class="booking-option" href="https://m.booking.naver.com/booking/13/bizes/1422502/items/7290567" rel="noopener" target="_blank"><span class="booking-copy"><strong data-i18n="naverBooking">NAVER予約</strong><small data-i18n="naverBookingNote">NAVERアカウントをお持ちの方</small></span><span class="booking-arrow" aria-hidden="true">↗</span></a>
+<a class="booking-option primary" data-direct-booking href="https://aire-spa-reservation.aire-spa-reservation.workers.dev/book?lang=ja"><span class="booking-copy"><strong data-i18n="directBooking">AIRE SPA 直接予約</strong><small data-i18n="directBookingNote">NAVERアカウントなしでAIRE SPAに予約リクエスト</small></span><span class="booking-arrow" aria-hidden="true">→</span></a>
 </div>
 <div class="reservation-list">
 <div class="reservation-item">
@@ -560,7 +574,7 @@ footer{background:var(--green)!important}
 <div class="footer-shell">
 <div class="footer-row">
 <div class="footer-brand-block">
-<img loading="lazy" decoding="async" alt="AIRE SPA &amp; AESTHETIC" src="logo-578892946e17.png"/>
+<div class="footer-logo"><img loading="lazy" decoding="async" alt="AIRE SPA &amp; AESTHETIC" src="logo-578892946e17.png"/><img class="footer-logo-text" loading="lazy" decoding="async" alt="" aria-hidden="true" src="logo-578892946e17.png"/></div>
 <p>大韓民国 ソウル特別市 江南区 テヘラン路78キル 14-15 2階</p>
 </div>
 <div class="footer-menu-block">
@@ -585,14 +599,17 @@ footer{background:var(--green)!important}
 </footer>
 <script>
 const copy={
-ko:{navPrograms:'프로그램',navSpace:'공간',navLocation:'위치',navReserve:'예약',introTitle:'Deeply Different.',introText:'아이레스파는 서울 강남에 위치한 <a href="private-spa-gangnam-ko.html">프라이빗 스파</a>입니다. 모든 관리는 예약제로 진행되며, 각 룸은 독립된 공간으로 운영됩니다. 차분한 분위기에서 바디와 페이셜 관리를 제공합니다.',statementTitle:'Private<br>by design',statementText:'각 객실 안에서 관리와 샤워, 준비를 한 공간에서 마칠 수 있도록 구성했습니다.',programTitle:'Programs',viewAll:'전체 프로그램 보기',bodyCare:'Body Care',coupleCare:'Couple Care',spaceTitle:'공간',privateRoomTitle:'1인 관리실',privateRoomText:'한 분씩 이용하는 독립된 관리실입니다. 각 룸 안에 샤워 공간이 마련되어 있습니다.',coupleRoomTitle:'커플 관리실',coupleRoomText:'두 분이 함께 이용할 수 있는 관리실입니다. 두 개의 베드를 여유 있게 배치했습니다.',waitingAreaTitle:'대기 공간',waitingAreaText:'예약 전 잠시 기다리거나 안내를 받을 수 있는 별도 공간입니다.',locationTitle:'위치',locationAddress:'서울특별시 강남구 테헤란로78길 14-15, 2층',googleMapTitle:'구글맵',openMap:'지도 크게 보기',reservationTitle:'예약',naverBooking:'네이버 예약',directBooking:'AIRE SPA 직접 예약',phoneLabel:'전화 예약',phoneNote:'전화 연결이 어려울 때는 휴대전화로 연락해 주세요.',instagramNote:'인스타그램 메시지로도 예약 문의가 가능합니다.',whatsappNote:'WhatsApp 메시지로도 예약 문의가 가능합니다.'},
-en:{navPrograms:'Programs',navSpace:'Space',navLocation:'Location',navReserve:'Reservation',introTitle:'Deeply Different.',introText:'AIRE SPA is a <a href="private-spa-gangnam.html">private spa located in Gangnam, Seoul</a>. All treatments are available by reservation, and each room is operated as an independent private space. We offer body and facial treatments in a calm setting.',statementTitle:'Private<br>by design',statementText:'Each room is arranged so that the treatment, shower and preparation can be completed within one private space.',programTitle:'Programs',viewAll:'View all programs',bodyCare:'Body Care',coupleCare:'Couple Care',spaceTitle:'The Space',privateRoomTitle:'Private Room',privateRoomText:'A separate room for one guest. Each room includes its own shower area.',coupleRoomTitle:'Couple Room',coupleRoomText:'A treatment room for two guests. Two beds are arranged with comfortable spacing.',waitingAreaTitle:'Waiting Lounge',waitingAreaText:'A separate area for check-in and waiting before your appointment.',locationTitle:'Location',locationAddress:'2F, 14-15, Teheran-ro 78-gil, Gangnam-gu, Seoul 06194, Republic of Korea',googleMapTitle:'Google Maps',openMap:'Open map',reservationTitle:'Reservation',naverBooking:'Naver Booking',directBooking:'Book with AIRE SPA',phoneLabel:'Phone',phoneNote:'If the landline is unavailable, please call the mobile number.',instagramNote:'Reservation inquiries are also available through Instagram direct message.',whatsappNote:'Reservation inquiries are also available through WhatsApp.'},
-ja:{navPrograms:'プログラム',navSpace:'施設',navLocation:'アクセス',navReserve:'予約',introTitle:'Deeply Different.',introText:'アイレスパは、ソウル・江南に位置する<a href="private-spa-gangnam-ja.html">プライベートスパ</a>です。すべての施術は予約制で、各ルームは独立した空間として運営しています。落ち着いた空間で、ボディとフェイシャルの施術をご提供します。',statementTitle:'Private<br>by design',statementText:'施術、シャワー、身支度までを一つの個室内で行えるように整えています。',programTitle:'Programs',viewAll:'全プログラムを見る',bodyCare:'Body Care',coupleCare:'Couple Care',spaceTitle:'空間',privateRoomTitle:'1名様用ルーム',privateRoomText:'お一人でご利用いただく個室です。各室にシャワースペースがあります。',coupleRoomTitle:'ペアルーム',coupleRoomText:'お二人でご利用いただける施術室です。2台のベッドをゆったり配置しています。',waitingAreaTitle:'待合スペース',waitingAreaText:'ご予約前の受付や待ち時間にご利用いただく独立したスペースです。',locationTitle:'アクセス',locationAddress:'大韓民国 ソウル特別市 江南区 テヘラン路78キル 14-15 2階',googleMapTitle:'Googleマップ',openMap:'地図を開く',reservationTitle:'予約',naverBooking:'NAVER予約',directBooking:'AIRE SPA 直接予約',phoneLabel:'電話予約',phoneNote:'固定電話につながらない場合は、携帯電話へご連絡ください。',instagramNote:'Instagramのメッセージからも予約のお問い合わせが可能です。',whatsappNote:'WhatsAppのメッセージからも予約のお問い合わせが可能です。'}};
+ko:{navPrograms:'프로그램',navSpace:'공간',navLocation:'위치',navReserve:'예약',introTitle:'Deeply Different.',introText:'아이레스파는 서울 강남에 위치한 <a href="private-spa-gangnam-ko.html">프라이빗 스파</a>입니다. 모든 관리는 예약제로 진행되며, 각 룸은 독립된 공간으로 운영됩니다. 차분한 분위기에서 바디와 페이셜 관리를 제공합니다.',statementTitle:'Private<br>by design',statementText:'각 객실 안에서 관리와 샤워, 준비를 한 공간에서 마칠 수 있도록 구성했습니다.',programTitle:'Programs',viewAll:'전체 프로그램 보기',bodyCare:'Body Care',coupleCare:'Couple Care',spaceTitle:'공간',privateRoomTitle:'1인 관리실',privateRoomText:'한 분씩 이용하는 독립된 관리실입니다. 각 룸 안에 샤워 공간이 마련되어 있습니다.',coupleRoomTitle:'커플 관리실',coupleRoomText:'두 분이 함께 이용할 수 있는 관리실입니다. 두 개의 베드를 여유 있게 배치했습니다.',waitingAreaTitle:'대기 공간',waitingAreaText:'예약 전 잠시 기다리거나 안내를 받을 수 있는 별도 공간입니다.',locationTitle:'위치',locationAddress:'서울특별시 강남구 테헤란로78길 14-15, 2층',googleMapTitle:'구글맵',openMap:'지도 크게 보기',reservationTitle:'예약',naverBooking:'네이버 예약',directBooking:'AIRE SPA 직접 예약',naverBookingNote:'네이버 아이디가 있는 분',directBookingNote:'네이버 아이디 없이 샵에 직접 예약 요청',phoneLabel:'전화 예약',phoneNote:'전화 연결이 어려울 때는 휴대전화로 연락해 주세요.',instagramNote:'인스타그램 메시지로도 예약 문의가 가능합니다.',whatsappNote:'WhatsApp 메시지로도 예약 문의가 가능합니다.'},
+en:{navPrograms:'Programs',navSpace:'Space',navLocation:'Location',navReserve:'Reservation',introTitle:'Deeply Different.',introText:'AIRE SPA is a <a href="private-spa-gangnam.html">private spa located in Gangnam, Seoul</a>. All treatments are available by reservation, and each room is operated as an independent private space. We offer body and facial treatments in a calm setting.',statementTitle:'Private<br>by design',statementText:'Each room is arranged so that the treatment, shower and preparation can be completed within one private space.',programTitle:'Programs',viewAll:'View all programs',bodyCare:'Body Care',coupleCare:'Couple Care',spaceTitle:'The Space',privateRoomTitle:'Private Room',privateRoomText:'A separate room for one guest. Each room includes its own shower area.',coupleRoomTitle:'Couple Room',coupleRoomText:'A treatment room for two guests. Two beds are arranged with comfortable spacing.',waitingAreaTitle:'Waiting Lounge',waitingAreaText:'A separate area for check-in and waiting before your appointment.',locationTitle:'Location',locationAddress:'2F, 14-15, Teheran-ro 78-gil, Gangnam-gu, Seoul 06194, Republic of Korea',googleMapTitle:'Google Maps',openMap:'Open map',reservationTitle:'Reservation',naverBooking:'Naver Booking',directBooking:'Book with AIRE SPA',naverBookingNote:'For guests with a NAVER account',directBookingNote:'Guests without a NAVER account may submit a reservation request directly to AIRE SPA.',phoneLabel:'Phone',phoneNote:'If the landline is unavailable, please call the mobile number.',instagramNote:'Reservation inquiries are also available through Instagram direct message.',whatsappNote:'Reservation inquiries are also available through WhatsApp.'},
+ja:{navPrograms:'プログラム',navSpace:'施設',navLocation:'アクセス',navReserve:'予約',introTitle:'Deeply Different.',introText:'アイレスパは、ソウル・江南に位置する<a href="private-spa-gangnam-ja.html">プライベートスパ</a>です。すべての施術は予約制で、各ルームは独立した空間として運営しています。落ち着いた空間で、ボディとフェイシャルの施術をご提供します。',statementTitle:'Private<br>by design',statementText:'施術、シャワー、身支度までを一つの個室内で行えるように整えています。',programTitle:'Programs',viewAll:'全プログラムを見る',bodyCare:'Body Care',coupleCare:'Couple Care',spaceTitle:'空間',privateRoomTitle:'1名様用ルーム',privateRoomText:'お一人でご利用いただく個室です。各室にシャワースペースがあります。',coupleRoomTitle:'ペアルーム',coupleRoomText:'お二人でご利用いただける施術室です。2台のベッドをゆったり配置しています。',waitingAreaTitle:'待合スペース',waitingAreaText:'ご予約前の受付や待ち時間にご利用いただく独立したスペースです。',locationTitle:'アクセス',locationAddress:'大韓民国 ソウル特別市 江南区 テヘラン路78キル 14-15 2階',googleMapTitle:'Googleマップ',openMap:'地図を開く',reservationTitle:'予約',naverBooking:'NAVER予約',directBooking:'AIRE SPA 直接予約',naverBookingNote:'NAVERアカウントをお持ちの方',directBookingNote:'NAVERアカウントなしでAIRE SPAに予約リクエスト',phoneLabel:'電話予約',phoneNote:'固定電話につながらない場合は、携帯電話へご連絡ください。',instagramNote:'Instagramのメッセージからも予約のお問い合わせが可能です。',whatsappNote:'WhatsAppのメッセージからも予約のお問い合わせが可能です。'}};
 function setLang(lang){
   document.documentElement.lang=lang==='ja'?'ja':lang;
   document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(copy[lang][key]!==undefined)el.innerHTML=copy[lang][key]});
   document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   document.querySelectorAll('[data-direct-booking]').forEach(a=>a.href=`https://aire-spa-reservation.aire-spa-reservation.workers.dev/book?lang=${lang}`);
+  const pagePrefix=lang==='ko'?'':`${lang}-`;
+  document.querySelectorAll('[data-nav-key="about"],.footer-menu-row a').forEach(a=>{if(/(?:^|-)about\.html$/.test(a.getAttribute('href')||''))a.href=`${pagePrefix}about.html`});
+  document.querySelectorAll('[data-nav-key="programs"],.text-link,.program-card,.footer-menu-row a').forEach(a=>{const href=a.getAttribute('href')||'';if(/(?:^|-)menu\.html(?:#.*)?$/.test(href))a.href=`${pagePrefix}menu.html${href.includes('#')?href.slice(href.indexOf('#')):''}`});
   try{localStorage.setItem('aire-lang',lang)}catch(e){}
 }
 function getSavedLang(){try{return localStorage.getItem('aire-lang')||'ja'}catch(e){return 'ko'}}
