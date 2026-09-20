@@ -1,0 +1,22 @@
+/* Shared, presentation-only refinements for the home, about and program pages. */
+.program-title-row h3{text-transform:uppercase}
+.program-hero{padding:64px 0}
+.program-hero-grid{min-height:180px;padding:0}
+.program-meta{font-size:13px;color:#555b54}
+.reservation-note,.booking-copy small{font-size:14px;line-height:1.7}
+.booking-option.primary .booking-copy small{color:#f2ece0}
+.section-head .text-link{font-size:13px}
+.fact span{font-size:15px}
+#content .desc,#content .included li{font-size:15px}
+#content .note,#content .process,#content .included-label{font-size:14px}
+@media(max-width:720px){
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .hero-copy h1{font-size:clamp(28px,9.5vw,58px);line-height:1.08}
+  .hero-copy h1 span{white-space:nowrap}
+  .program-hero{padding:38px 0 36px}
+  .program-hero-grid{min-height:0;padding:0;gap:24px}
+  .intro p,.space-copy p,.hero-copy p,.story-copy p,.closing-copy p,
+  .program-hero .intro{font-size:16px;line-height:1.8}
+  body > .mobile-reserve{display:inline-flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:110;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid #f2ece0;background:#102a24;color:#fffdfa;font-size:14px;line-height:1.4;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 3px 14px rgba(16,42,36,.18)}
+  body > .mobile-reserve:focus-visible{outline:2px solid #c7a86a;outline-offset:3px}
+}
