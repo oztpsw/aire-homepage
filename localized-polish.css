@@ -1,0 +1,17 @@
+/* Loaded only by EN/JA pages; Korean pages retain their existing presentation. */
+.localized-scroll{display:contents}
+.treatment-step{display:inline-block;white-space:nowrap}
+.process p{display:flex;flex-wrap:wrap;gap:4px 8px}
+.process .step-arrow{display:inline-block;margin-right:8px}
+.course h4,.section-head h2{text-wrap:balance;word-break:normal;overflow-wrap:normal}
+@media(max-width:720px){
+  .section-head:has(.text-link){flex-wrap:wrap;gap:16px}
+  .section-head .text-link{white-space:normal}
+  html:has(.localized-scroll){overflow:hidden}
+  body:has(.localized-scroll){height:100dvh;display:flex;flex-direction:column;padding-bottom:0;overflow:hidden}
+  .localized-scroll{display:block;order:0;flex:1;min-height:0;overflow-y:auto;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 76px)}
+  body > .mobile-reserve{position:static;order:1;flex:none;width:100%;min-height:64px;margin:0;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));border:0;border-top:1px solid #d9d6cf;box-shadow:none}
+  .site-header.open .primary-nav{max-height:calc(100dvh - 150px);overflow-y:auto}
+}
+@media(prefers-reduced-motion:reduce){.localized-scroll{scroll-behavior:auto}}
+@media(max-width:360px){.site-header .logo{width:110px}.site-header .logo img{width:100%}}
