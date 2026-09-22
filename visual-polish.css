@@ -20,3 +20,63 @@
   body > .mobile-reserve{display:inline-flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:110;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid #f2ece0;background:#102a24;color:#fffdfa;font-size:14px;line-height:1.4;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 3px 14px rgba(16,42,36,.18)}
   body > .mobile-reserve:focus-visible{outline:2px solid #c7a86a;outline-offset:3px}
 }
+
+/* About interview lead */
+.interview-hero{background:#fffdfa;border-bottom:1px solid #d9d6cf;padding:56px 0}
+.interview-layout{display:grid;grid-template-columns:minmax(300px,44fr) minmax(440px,56fr);grid-template-rows:auto 1fr;column-gap:clamp(48px,5.5vw,80px);align-items:start}
+.interview-portrait{grid-column:1;grid-row:1 / span 2;width:min(100%,460px);margin:0}
+.interview-portrait picture,.interview-portrait img{display:block;width:100%}
+.interview-portrait img{height:auto;background:#e8e9eb}
+.interview-portrait figcaption{margin-top:14px;color:#6f716c;font-size:14px;line-height:1.65;letter-spacing:-.01em}
+.interview-head{grid-column:2;grid-row:1;padding-top:4px}
+.interview-head p,.interview-head h1,.interview-head time,.interview-body p,.interview-body blockquote{margin-top:0}
+.interview-kicker{margin-bottom:28px;font-size:12px;line-height:1.6;letter-spacing:.22em}
+.interview-outlet{margin-bottom:7px;font-size:18px;line-height:1.55;font-weight:500;letter-spacing:-.015em}
+.interview-head h1{margin-bottom:5px;font-family:var(--font-sans);font-size:24px;line-height:1.45;font-weight:500;letter-spacing:-.025em}
+.interview-head time{display:block;color:#6f716c;font-size:13px;line-height:1.65;letter-spacing:.03em}
+.interview-body{grid-column:2;grid-row:2;align-self:end;max-width:560px;padding-top:34px}
+.interview-body blockquote{margin-right:0;margin-bottom:27px;margin-left:0;font-family:var(--font-sans);font-size:40px;line-height:1.45;font-weight:400;letter-spacing:-.035em;text-wrap:balance}
+html[lang="en"] .interview-body blockquote{font-family:Georgia,"Times New Roman",serif;font-size:44px;line-height:1.3;letter-spacing:-.025em}
+html[lang="ja"] .interview-body blockquote{font-size:38px;line-height:1.5;letter-spacing:-.035em}
+.interview-summary{margin-bottom:25px;color:#252722;font-size:16px;line-height:1.8;letter-spacing:-.012em}
+.interview-link{position:relative;display:inline-block;padding:4px 0 8px;color:#102a24;font-size:15px;line-height:1.6;font-weight:500}
+.interview-link::after{content:"";position:absolute;right:0;bottom:2px;left:0;height:1px;background:#102a24;transform-origin:left;transition:transform .3s ease}
+.interview-link:hover::after{transform:scaleX(.55)}
+.interview-helper,.interview-translation{color:#6f716c;font-size:13px;line-height:1.65}
+.interview-helper{margin-bottom:0;padding-top:8px}
+.interview-translation{margin-bottom:0;padding-top:3px}
+.about-story-title{margin:0 0 32px}
+.about-story-title + p{margin-top:0}
+
+@media(max-width:1100px){
+  .interview-layout{grid-template-columns:minmax(290px,44fr) minmax(0,56fr);column-gap:48px}
+  .interview-body blockquote{font-size:34px}
+  html[lang="en"] .interview-body blockquote{font-size:38px}
+  html[lang="ja"] .interview-body blockquote{font-size:33px}
+}
+
+@media(max-width:900px){
+  .interview-hero{padding:40px 0 52px}
+  .interview-layout{display:flex;flex-direction:column}
+  .interview-head{order:1;width:100%;padding-top:0}
+  .interview-portrait{order:2;width:min(100%,520px);max-width:none;margin-top:26px}
+  .interview-body{order:3;width:100%;max-width:640px;padding-top:30px}
+}
+
+@media(max-width:720px){
+  .interview-hero{padding:24px 0 40px}
+  .interview-hero .wrap{width:auto;margin-inline:24px}
+  .interview-kicker{margin-bottom:19px;font-size:12px}
+  .interview-outlet{margin-bottom:5px;font-size:16px}
+  .interview-head h1{margin-bottom:5px;font-size:22px;line-height:1.45}
+  .interview-portrait{margin-top:22px}
+  .interview-portrait figcaption{margin-top:11px;font-size:14px}
+  .interview-body{padding-top:25px}
+  .interview-body blockquote{margin-bottom:22px;font-size:28px;line-height:1.55;letter-spacing:-.035em;text-wrap:pretty}
+  html[lang="en"] .interview-body blockquote{font-size:32px;line-height:1.3}
+  html[lang="ja"] .interview-body blockquote{font-size:27px;line-height:1.6}
+  .interview-summary{margin-bottom:21px;font-size:16px;line-height:1.8}
+  .interview-link{font-size:15px}
+  .interview-helper,.interview-translation{font-size:13px}
+  .about-story-title{margin-bottom:25px}
+}
