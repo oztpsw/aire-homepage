@@ -53,7 +53,7 @@ for(const[source,target,title,description]of pages){
    const data=JSON.parse(block.replace(/^.*?>/s,'').replace(/<\/script>$/,''));
    return '<script type="application/ld+json">\n'+JSON.stringify(schemaTranslate(data,title,description,target,source),null,2)+'\n</script>';
   }
-  return block.includes('analytics-consent.js')||block.includes('localized-polish.js')?block:'';
+  return block.includes('analytics-consent.js')||block.includes('localized-polish.js')||block.includes('language-switch.js')?block:'';
  });
  html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${encode(title)}</title>`);
  html=html.replace(/<meta\b[^>]*(?:name="(?:description|twitter:title|twitter:description)"|property="(?:og:title|og:description|og:url|og:locale)")[^>]*>/g,tag=>{
