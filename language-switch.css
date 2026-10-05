@@ -14,3 +14,15 @@
  .has-chinese .lang{gap:5px}
  .has-chinese .lang button{min-width:20px}
 }
+/* Native language names stay on one line next to the mobile menu. */
+.has-chinese .lang{letter-spacing:0}
+.has-chinese .lang button{padding-inline:3px;white-space:nowrap}
+@media(max-width:720px){
+ .has-chinese .lang{font-size:11px;gap:6px}
+ .has-chinese .lang button,.has-chinese .lang a{min-width:0;padding-inline:2px}
+ .has-chinese .header-actions{gap:6px}
+}
+@media(max-width:360px){
+ .has-chinese .lang{gap:4px}
+ .has-chinese .menu-toggle{margin-left:0}
+}

@@ -14,7 +14,7 @@ for(const[source,target]of groups){
   if(match[1].includes('application/ld+json'))JSON.parse(match[2]);
   else new vm.Script(match[2]);
  }
- const text=t.replace(/<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>/g,'').replace(/<[^>]*>/g,'');
+ const text=t.replace(/<div class="lang">[\s\S]*?<\/div>/g,'').replace(/<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>/g,'').replace(/<[^>]*>/g,'');
  assert(!/[\uac00-\ud7af]/.test(text.replaceAll('시사와이드경제','')),`Untranslated Korean: ${target}`);
  assert(!/[\u3040-\u30ff]/.test(text),`Untranslated Japanese: ${target}`);
  if(target==='zh-about.html'){

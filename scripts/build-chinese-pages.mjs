@@ -13,7 +13,7 @@ const pages=[
 const names=Object.fromEntries(pages.map(([s,t])=>[s,t]));
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&nbsp;','\u00a0').replaceAll('&quot;','"').replaceAll('&#39;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 const encode=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const keep=new Set(['EN','JP','KR','AIRE SPA','& AESTHETIC','AIRE SPA & AESTHETIC','Deeply Different.','시사와이드경제','→','↗','01','02','03','INSTAGRAM','WHATSAPP','@aire.spa.aesthetic','02-564-5455','010-2497-5455','A SIGNATURE','B SIGNATURE','C SIGNATURE','ENERGY RITUAL','ENERGY COMPLETE','LINE & VOLUME RITUAL','LINE & VOLUME COMPLETE','← AIRE SPA','_ga','_ga_<container-id>','简中','简体中文']);
+const keep=new Set(['EN','JP','KR','AIRE SPA','& AESTHETIC','AIRE SPA & AESTHETIC','Deeply Different.','시사와이드경제','→','↗','01','02','03','INSTAGRAM','WHATSAPP','@aire.spa.aesthetic','02-564-5455','010-2497-5455','A SIGNATURE','B SIGNATURE','C SIGNATURE','ENERGY RITUAL','ENERGY COMPLETE','LINE & VOLUME RITUAL','LINE & VOLUME COMPLETE','← AIRE SPA','_ga','_ga_<container-id>','简中','简体中文','中文','日本語','한국어']);
 function translate(s){
  const key=decode(s).trim();
  if(!key)return s;
@@ -77,14 +77,14 @@ for(const[source,target,title,description]of pages){
  // Chinese pages use real links; no runtime language substitution can overwrite them.
  body=body.replace(/<button\b[^>]*data-lang="(en|ja|ko)"[^>]*>[\s\S]*?<\/button>/g,(_,lang)=>{
   const root=source==='en.html'?{en:'en.html',ja:'ja.html',ko:'index.html'}:source==='en-about.html'?{en:'en-about.html',ja:'ja-about.html',ko:'about.html'}:{en:'en-menu.html',ja:'ja-menu.html',ko:'menu.html'};
-  return `<a href="${root[lang]}" lang="${lang}" hreflang="${lang}">${{en:'EN',ja:'JP',ko:'KR'}[lang]}</a>`;
+  return `<a href="${root[lang]}" lang="${lang}" hreflang="${lang}">${{en:'EN',ja:'日本語',ko:'한국어'}[lang]}</a>`;
  });
  // Convert EN content links, excluding the language selector.
  body=body.replace(/href="([^"#]+)(#[^"]*)?"/g,(m,href,hash='')=>names[href]?`href="${names[href]}${hash}"`:m);
  // Restore original language switch destinations after translating content links.
  if(source!=='privacy.html')body=body.replace(/<div class="lang">[\s\S]*?<\/div>/,()=>{
   const group=source==='en.html'?['index.html','en.html','ja.html']:source==='en-about.html'?['about.html','en-about.html','ja-about.html']:source==='en-menu.html'?['menu.html','en-menu.html','ja-menu.html']:['private-spa-gangnam-ko.html','private-spa-gangnam.html','private-spa-gangnam-ja.html'];
-  return `<div class="lang"><a href="${group[1]}" lang="en" hreflang="en">EN</a><a href="${group[2]}" lang="ja" hreflang="ja">JP</a><a href="${group[0]}" lang="ko" hreflang="ko">KR</a><a class="active" href="${target}" lang="zh-CN" hreflang="zh-CN" aria-label="简体中文" aria-current="page">简中</a></div>`;
+  return `<div class="lang"><a href="${group[1]}" lang="en" hreflang="en">EN</a><a href="${group[2]}" lang="ja" hreflang="ja">日本語</a><a href="${group[0]}" lang="ko" hreflang="ko">한국어</a><a class="active" href="${target}" lang="zh-CN" hreflang="zh-CN" aria-label="简体中文" aria-current="page">中文</a></div>`;
  });
  body=body.replaceAll('href="index.html"','href="zh.html"');
  if(source!=='privacy.html')body=body.replace('href="zh.html" lang="ko"','href="index.html" lang="ko"');
@@ -94,7 +94,7 @@ for(const[source,target,title,description]of pages){
  body=body.replace('<header class="site-header">','<header class="site-header has-chinese">');
  if(!head.includes('rel="canonical"'))head=head.replace('</head>',`<link rel="canonical" href="${origin+target}">\n</head>`);
  if(source!=='privacy.html'&&!head.includes('hreflang="zh-CN"'))head=head.replace('</head>',`<link rel="alternate" hreflang="zh-CN" href="${origin+target}">\n</head>`);
- if(!head.includes('href="language-switch.css"'))head=head.replace('</head>','<link rel="stylesheet" href="language-switch.css">\n</head>');
+ if(!head.includes('href="language-switch.css'))head=head.replace('</head>','<link rel="stylesheet" href="language-switch.css?v=20261006-native">\n</head>');
  head=head.replace('</head>','<link rel="stylesheet" href="chinese.css">\n</head>');
  body=body.replace(/src="localized-polish\.js[^"]*"/g,'src="localized-polish.js?v=zh-20261006"').replace(/src="analytics-consent\.js[^"]*"/g,'src="analytics-consent.js?v=zh-20261006"');
  body=body.replace('</body>','<script src="chinese-page.js"></script>\n</body>');

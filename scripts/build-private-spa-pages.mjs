@@ -43,7 +43,7 @@ const alternates = `<link rel="alternate" hreflang="ko" href="https://airespaseo
 let source = fs.readFileSync(sourceFile,'utf8')
   .replace(/<link rel="alternate" hreflang="[^"]+"[^>]+>\n?/g,'')
   .replace(/(<link rel="canonical" href="[^"]+">)/,`$1\n${alternates}`);
-source = source.replace('<div class="header-actions"><div class="lang"><a href="index.html">KR</a><a class="active" href="en.html" aria-label="English home">EN</a><a href="ja.html">JP</a></div>',`<div class="header-actions"><div class="lang"><a href="${urls.ko}">KR</a><a class="active" href="${urls.en}">EN</a><a href="${urls.ja}">JP</a></div>`);
+source = source.replace('<div class="header-actions"><div class="lang"><a href="index.html">한국어</a><a class="active" href="en.html" aria-label="English home">EN</a><a href="ja.html">日本語</a></div>',`<div class="header-actions"><div class="lang"><a href="${urls.ko}">한국어</a><a class="active" href="${urls.en}">EN</a><a href="${urls.ja}">日本語</a></div>`);
 fs.writeFileSync(sourceFile,source);
 
 for (const [lang,v] of Object.entries(variants)) {
@@ -64,7 +64,7 @@ for (const [lang,v] of Object.entries(variants)) {
     .replace('"description": "AIRE SPA is a reservation-based, non-medical private spa in Gangnam offering body and facial treatments, including facial and massage services."',`"description": "${v.description}"`)
     .replace('"inLanguage": "en"',`"inLanguage": "${lang}"`)
     .replaceAll('href="en-about.html"',`href="${v.about}"`).replaceAll('href="en-menu.html',`href="${v.menu}`).replaceAll('href="en.html#top"',`href="${v.home}#top"`)
-    .replace(`<div class="header-actions"><div class="lang"><a href="${urls.ko}">KR</a><a class="active" href="${urls.en}">EN</a><a href="${urls.ja}">JP</a></div>`,`<div class="header-actions"><div class="lang"><a${lang==='ko'?' class="active"':''} href="${urls.ko}">KR</a><a${lang==='en'?' class="active"':''} href="${urls.en}">EN</a><a${lang==='ja'?' class="active"':''} href="${urls.ja}">JP</a></div>`);
+    .replace(`<div class="header-actions"><div class="lang"><a href="${urls.ko}">한국어</a><a class="active" href="${urls.en}">EN</a><a href="${urls.ja}">日本語</a></div>`,`<div class="header-actions"><div class="lang"><a${lang==='ko'?' class="active"':''} href="${urls.ko}">한국어</a><a${lang==='en'?' class="active"':''} href="${urls.en}">EN</a><a${lang==='ja'?' class="active"':''} href="${urls.ja}">日本語</a></div>`);
   for(const [from,to] of Object.entries(v.replacements)) html=html.replaceAll(from,to);
   if(lang==='ko') html=html
     .replaceAll('VIEW 프로그램','프로그램 보기')
