@@ -13,7 +13,7 @@ const pages=[
 const names=Object.fromEntries(pages.map(([s,t])=>[s,t]));
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&nbsp;','\u00a0').replaceAll('&quot;','"').replaceAll('&#39;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 const encode=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const keep=new Set(['EN','JP','KR','AIRE SPA','& AESTHETIC','AIRE SPA & AESTHETIC','Deeply Different.','시사와이드경제','→','↗','01','02','03','INSTAGRAM','WHATSAPP','@aire.spa.aesthetic','02-564-5455','010-2497-5455','A SIGNATURE','B SIGNATURE','C SIGNATURE','ENERGY RITUAL','ENERGY COMPLETE','LINE & VOLUME RITUAL','LINE & VOLUME COMPLETE','← AIRE SPA','_ga','_ga_<container-id>','简中','简体中文','中文','日本語','한국어']);
+const keep=new Set(['EN','JP','KR','AIRE SPA','& AESTHETIC','AIRE SPA & AESTHETIC','Deeply Different.','시사와이드경제','→','↗','01','02','03','INSTAGRAM','WHATSAPP','WhatsApp','@aire.spa.aesthetic','02-564-5455','010-2497-5455','A SIGNATURE','B SIGNATURE','C SIGNATURE','ENERGY RITUAL','ENERGY COMPLETE','LINE & VOLUME RITUAL','LINE & VOLUME COMPLETE','← AIRE SPA','_ga','_ga_<container-id>','简中','简体中文','中文','日本語','한국어']);
 function translate(s){
  const key=decode(s).trim();
  if(!key)return s;
