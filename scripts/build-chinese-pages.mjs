@@ -96,6 +96,7 @@ for(const[source,target,title,description]of pages){
  if(source!=='privacy.html'&&!head.includes('hreflang="zh-CN"'))head=head.replace('</head>',`<link rel="alternate" hreflang="zh-CN" href="${origin+target}">\n</head>`);
  if(!head.includes('href="language-switch.css"'))head=head.replace('</head>','<link rel="stylesheet" href="language-switch.css">\n</head>');
  head=head.replace('</head>','<link rel="stylesheet" href="chinese.css">\n</head>');
+ body=body.replace(/src="localized-polish\.js[^"]*"/g,'src="localized-polish.js?v=zh-20261006"').replace(/src="analytics-consent\.js[^"]*"/g,'src="analytics-consent.js?v=zh-20261006"');
  body=body.replace('</body>','<script src="chinese-page.js"></script>\n</body>');
  fs.writeFileSync(target,head+body);
  console.log(`Built ${target}`);
