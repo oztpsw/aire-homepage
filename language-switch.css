@@ -1,0 +1,16 @@
+/* Shared addition for the fourth language; page content remains unchanged. */
+.has-chinese .lang a{display:inline-grid;place-items:center;min-width:32px;min-height:36px;opacity:.5;font:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap}
+.has-chinese .lang a.active{opacity:1;border-bottom:1px solid currentColor}
+.has-chinese .lang a:hover{opacity:1}
+.has-chinese .lang a:focus-visible{outline:1px solid currentColor;outline-offset:3px}
+@media(max-width:720px){
+ .has-chinese .lang{gap:6px}
+ .has-chinese .lang a{min-width:22px}
+ .has-chinese .header-actions{gap:8px}
+}
+@media(max-width:360px){
+ .has-chinese .logo{width:100px}
+ .has-chinese .logo img{width:100%;height:auto}
+ .has-chinese .lang{gap:5px}
+ .has-chinese .lang button{min-width:20px}
+}

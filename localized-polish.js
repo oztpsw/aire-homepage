@@ -6,7 +6,7 @@ localizedScroll?.addEventListener('scroll', () => {
 
 function polishLocalizedLabels() {
   const lang = document.documentElement.lang;
-  if (lang !== 'en' && lang !== 'ja') return;
+  if (lang !== 'en' && lang !== 'ja' && lang !== 'zh-CN') return;
   document.querySelectorAll('.process p').forEach(paragraph => {
     if (!paragraph.textContent.includes('→') || paragraph.querySelector('.treatment-step')) return;
     const steps = paragraph.textContent.split('→').map(text => text.trim());
@@ -24,7 +24,7 @@ function polishLocalizedLabels() {
     }));
   });
   const toggle = document.querySelector('.menu-toggle');
-  if (toggle) toggle.setAttribute('aria-label', lang === 'ja'
+  if (toggle && lang !== 'zh-CN') toggle.setAttribute('aria-label', lang === 'ja'
     ? (toggle.getAttribute('aria-expanded') === 'true' ? 'メニューを閉じる' : 'メニューを開く')
     : (toggle.getAttribute('aria-expanded') === 'true' ? 'Close menu' : 'Open menu'));
   if (lang === 'ja') {

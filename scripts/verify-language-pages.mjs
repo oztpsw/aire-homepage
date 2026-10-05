@@ -2,12 +2,12 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 
 const groups = [
-  ['index.html', 'en.html', 'ja.html'],
-  ['about.html', 'en-about.html', 'ja-about.html'],
-  ['menu.html', 'en-menu.html', 'ja-menu.html']
+  ['index.html', 'en.html', 'ja.html', 'zh.html'],
+  ['about.html', 'en-about.html', 'ja-about.html', 'zh-about.html'],
+  ['menu.html', 'en-menu.html', 'ja-menu.html', 'zh-menu.html']
 ];
 const allFiles = groups.flat();
-const landingPages = ['private-spa-gangnam.html', 'private-spa-gangnam-ko.html', 'private-spa-gangnam-ja.html'];
+const landingPages = ['private-spa-gangnam.html', 'private-spa-gangnam-ko.html', 'private-spa-gangnam-ja.html', 'private-spa-gangnam-zh.html'];
 
 for (const group of groups) {
   const cssHashes = group.map(file => {
@@ -29,9 +29,9 @@ for (const file of allFiles) {
     if (!fs.existsSync(localPath)) throw new Error(`${file}: missing local target ${link}`);
   }
   const alternates = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
-  if (alternates.length !== 4) throw new Error(`${file}: expected 4 hreflang links, found ${alternates.length}`);
+  if (alternates.length !== 5) throw new Error(`${file}: expected 5 hreflang links, found ${alternates.length}`);
   const languages = new Set(alternates.map(([unused, language]) => language));
-  for (const language of ['ko', 'en', 'ja', 'x-default']) {
+  for (const language of ['ko', 'en', 'ja', 'zh-CN', 'x-default']) {
     if (!languages.has(language)) throw new Error(`${file}: missing hreflang ${language}`);
   }
 }
@@ -48,8 +48,8 @@ for (const file of landingPages) {
   const url = `https://airespaseoul.com/${file}`;
   if (!html.includes(`<link rel="canonical" href="${url}">`)) throw new Error(`${file}: canonical URL mismatch`);
   const alternates = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
-  if (alternates.length !== 4) throw new Error(`${file}: expected 4 hreflang links, found ${alternates.length}`);
-  for (const language of ['ko', 'en', 'ja', 'x-default']) {
+  if (alternates.length !== 5) throw new Error(`${file}: expected 5 hreflang links, found ${alternates.length}`);
+  for (const language of ['ko', 'en', 'ja', 'zh-CN', 'x-default']) {
     if (!alternates.some(match => match[1] === language)) throw new Error(`${file}: missing hreflang ${language}`);
   }
 }

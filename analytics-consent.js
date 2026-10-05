@@ -5,7 +5,9 @@
     ? { privacy: '개인정보 안내' }
     : lang.startsWith('ja')
       ? { privacy: 'プライバシー通知' }
-      : { privacy: 'Privacy notice' };
+      : lang.startsWith('zh')
+        ? { privacy: '隐私说明' }
+        : { privacy: 'Privacy notice' };
 
   function loadAnalytics() {
     if (document.querySelector(`script[data-ga-id="${measurementId}"]`)) return;
@@ -29,7 +31,7 @@
   if (copyright && !copyright.querySelector('.analytics-privacy-link')) {
     const privacyLink = document.createElement('a');
     privacyLink.className = 'analytics-privacy-link';
-    privacyLink.href = 'privacy.html';
+    privacyLink.href = lang.startsWith('zh') ? 'zh-privacy.html' : 'privacy.html';
     privacyLink.textContent = copy.privacy;
     copyright.appendChild(privacyLink);
   }
