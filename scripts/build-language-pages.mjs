@@ -11,7 +11,7 @@ const files = {
 const metadata = {
   index: {
     en: {
-      title: 'AIRE SPA & AESTHETIC | Official Website',
+      title: 'Private Spa & Massage in Gangnam, Seoul | AIRE SPA & AESTHETIC',
       description: 'AIRE SPA & AESTHETIC is a reservation-based, non-medical spa in Gangnam offering private rooms and body and facial treatments in Gangnam, Seoul.'
     },
     ja: {
@@ -129,6 +129,13 @@ function localizeIndex(html, lang) {
   for (const [key, value] of Object.entries(copy[lang])) html = setElementByDataKey(html, key, value);
   const address = copy[lang].locationAddress;
   html = html.replace(/(<div class="footer-brand-block">[\s\S]*?<p>)[\s\S]*?(<\/p>)/, `$1${address}$2`);
+  if (lang === 'en') {
+    const visit = '<p class="location-address" data-english-visit>Nearby station: Seolleung.<br/>For a taxi or map search, use the Korean address:<br/>서울특별시 강남구 테헤란로78길 14-15, 2층<br/>AIRE SPA is on the second floor. Use the map below to plan your route.</p>';
+    html = html.replace('<div class="map-embed">', `${visit}\n<div class="map-embed">`)
+      .replaceAll('href="tel:025645455">02-564-5455', 'href="tel:+8225645455">+82-2-564-5455')
+      .replaceAll('href="tel:01024975455">010-2497-5455', 'href="tel:+821024975455">+82-10-2497-5455')
+      .replace('<span>010-2497-5455</span>', '<span>+82-10-2497-5455</span>');
+  }
   return html;
 }
 

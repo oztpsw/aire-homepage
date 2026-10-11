@@ -47,7 +47,12 @@ source = source.replace('<div class="header-actions"><div class="lang"><a href="
 fs.writeFileSync(sourceFile,source);
 
 for (const [lang,v] of Object.entries(variants)) {
-  let html=source.replace('<html lang="en">',`<html lang="${lang}">`);
+  // Keep English-only visit and booking additions out of other language pages.
+  let html=source
+    .replace(/<!-- english-(?:visit|booking)-start -->[\s\S]*?<!-- english-(?:visit|booking)-end -->/g, '')
+    .replaceAll('href="tel:+8225645455">+82-2-564-5455', 'href="tel:025645455">02-564-5455')
+    .replaceAll('href="tel:+821024975455">+82-10-2497-5455', 'href="tel:01024975455">010-2497-5455')
+    .replace('<html lang="en">',`<html lang="${lang}">`);
   const url=`https://airespaseoul.com/${v.file}`;
   html=html.replace(/<title>[^<]+<\/title>/,`<title>${v.title}</title>`)
     .replace(/<meta name="description" content="[^"]+">/,`<meta name="description" content="${v.description}">`)
