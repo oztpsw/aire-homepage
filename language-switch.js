@@ -1,6 +1,6 @@
 // Version only language-switch destinations so a cached pre-label page is not reused.
 (() => {
-  const revision = '20261006-footer';
+  const revision = '20261021-reservation';
   const groups = [
     {ko:'index.html',en:'en.html',ja:'ja.html','zh-CN':'zh.html'},
     {ko:'about.html',en:'en-about.html',ja:'ja-about.html','zh-CN':'zh-about.html'},
@@ -10,6 +10,18 @@
   const file = location.pathname.split('/').pop() || 'index.html';
   const group = groups.find(g => Object.values(g).includes(file));
   if (!group) return;
+  // Keep existing external reservation URLs usable on pages without that section.
+  function followReservationAnchor() {
+    if (location.hash !== '#reservation' || document.getElementById('reservation')) return;
+    const link = document.querySelector('a.mobile-reserve[href],a[data-nav-key="reservation"][href]');
+    if (!link) return;
+    const destination = new URL(link.getAttribute('href'), location.href);
+    if (destination.origin === location.origin && destination.pathname !== location.pathname && destination.hash === '#reservation') {
+      location.replace(destination.href);
+    }
+  }
+  followReservationAnchor();
+  window.addEventListener('hashchange', followReservationAnchor);
   const names = {en:'EN',ja:'日本語',ko:'한국어','zh-CN':'中文'};
   function normalize() {
     document.querySelectorAll('.lang button,.lang a').forEach(el => {
