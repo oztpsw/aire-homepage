@@ -22,7 +22,7 @@
   const internal = role !== 'visitor' || localHost;
   document.documentElement.dataset.analyticsStatus = internal ? 'excluded' : 'enabled';
 
-  // Marked staff and assistant browsers never load GA or send analytics events.
+  // Marked staff and assistant browsers never load GA/Naver or send analytics events.
   // Do this before the first config call so even the first page_view is excluded.
   if (internal) {
     window['ga-disable-' + measurementId] = true;
@@ -41,6 +41,41 @@
   script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
   script.dataset.gaId = measurementId;
   document.head.appendChild(script);
+
+  // Naver custom events represent outbound clicks, never completed bookings.
+  const naverTypes = {
+    reservation_click: 'custom001',
+    inquiry_click: 'custom002',
+    phone_click: 'custom003',
+    directions_click: 'custom004'
+  };
+  const naverQueue = [];
+  let naverReady = false;
+  function sendNaverClick(eventName) {
+    const type = naverTypes[eventName];
+    if (!type) return;
+    if (!naverReady) { naverQueue.push(type); return; }
+    try { window.wcs.trans({ type: type }); }
+    catch (_) { /* Analytics must never interrupt navigation. */ }
+  }
+  window.wcs_add = window.wcs_add || {};
+  window.wcs_add.wa = 's_4e61339ee086';
+  window._nasa = window._nasa || {};
+  const naverScript = document.createElement('script');
+  naverScript.async = true;
+  naverScript.src = 'https://wcs.naver.net/wcslog.js';
+  naverScript.onload = function () {
+    if (!window.wcs || typeof window.wcs_do !== 'function') return;
+    try {
+      window.wcs.inflow('airespaseoul.com');
+      window.wcs_do();
+      naverReady = typeof window.wcs.trans === 'function';
+      if (naverReady) naverQueue.splice(0).forEach(function (type) {
+        try { window.wcs.trans({ type: type }); } catch (_) { /* Keep navigation working. */ }
+      });
+    } catch (_) { /* A blocked analytics service must not affect the website. */ }
+  };
+  document.head.appendChild(naverScript);
 
   function classify(link) {
     let url;
@@ -68,6 +103,7 @@
     if (!link) return;
     const action = classify(link);
     if (!action) return;
+    sendNaverClick(action[0]);
     const url = new URL(link.getAttribute('href'), window.location.href);
     // Send fixed categories, not email addresses, phone numbers or arbitrary query strings.
     window.gtag('event', action[0], {
