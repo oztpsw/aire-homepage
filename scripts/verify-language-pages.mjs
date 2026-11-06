@@ -23,7 +23,7 @@ for (const file of allFiles) {
   const html = fs.readFileSync(file, 'utf8');
   const localLinks = [...html.matchAll(/(?:src|href)="([^"#]+)(?:#[^"]*)?"/g)]
     .map(match => match[1])
-    .filter(link => !/^(?:https?:|tel:|\/)/.test(link));
+    .filter(link => !/^(?:https?:|tel:|mailto:|\/)/.test(link));
   for (const link of localLinks) {
     const localPath = link.split(/[?#]/, 1)[0];
     if (!fs.existsSync(localPath)) throw new Error(`${file}: missing local target ${link}`);
@@ -40,7 +40,7 @@ for (const file of landingPages) {
   const html = fs.readFileSync(file, 'utf8');
   const localLinks = [...html.matchAll(/(?:src|href)="([^"#]+)(?:#[^"]*)?"/g)]
     .map(match => match[1])
-    .filter(link => !/^(?:https?:|tel:|\/)/.test(link));
+    .filter(link => !/^(?:https?:|tel:|mailto:|\/)/.test(link));
   for (const link of localLinks) {
     const localPath = link.split(/[?#]/, 1)[0];
     if (!fs.existsSync(localPath)) throw new Error(`${file}: missing local target ${link}`);
