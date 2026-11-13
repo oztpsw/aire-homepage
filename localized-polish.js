@@ -40,3 +40,39 @@ function polishLocalizedLabels() {
 polishLocalizedLabels();
 document.querySelector('.menu-toggle')?.addEventListener('click', polishLocalizedLabels);
 document.querySelectorAll('.lang button').forEach(button => button.addEventListener('click', polishLocalizedLabels));
+
+// Hide the shortcut while its destination is already visible on mobile.
+(() => {
+  const button = document.querySelector('body > .mobile-reserve[href="#reservation"]');
+  const reservation = document.getElementById('reservation');
+  if (!button || !reservation) return;
+  const mobile = matchMedia('(max-width:720px)');
+  const header = document.querySelector('.site-header');
+  let pending = false;
+
+  function update() {
+    pending = false;
+    if (!mobile.matches) { button.hidden = false; return; }
+    const style = getComputedStyle(button);
+    const px = name => parseFloat(style[name]) || 0;
+    const barHeight = Math.max(px('minHeight'), px('lineHeight') + px('paddingTop') + px('paddingBottom') + px('borderTopWidth') + px('borderBottomWidth'));
+    // Use the same viewport boundary whether the bar is visible or collapsed.
+    // Otherwise the extra space created by hiding it can cause repeated toggles.
+    const bottom = document.body.getBoundingClientRect().bottom - barHeight;
+    const top = Math.max(0, header?.getBoundingClientRect().bottom || 0);
+    const area = reservation.getBoundingClientRect();
+    button.hidden = area.top < bottom - 1 && area.bottom > top + 1;
+  }
+  function schedule() {
+    if (!pending) { pending = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  window.addEventListener('load', schedule);
+  mobile.addEventListener('change', schedule);
+  const observer = new ResizeObserver(schedule);
+  observer.observe(document.body);
+  observer.observe(reservation);
+  document.fonts?.ready.then(schedule);
+  update();
+})();
