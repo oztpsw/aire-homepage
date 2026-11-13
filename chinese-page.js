@@ -32,7 +32,7 @@
     el.style.setProperty('--reveal-delay', `${Math.min(i%3,2)*65}ms`);
     if(reduced)el.classList.add('visible','is-visible'); else reveal.observe(el);
   });
-  const tabLinks = [...document.querySelectorAll('.tabs a,.primary-nav a[href^="#"]')];
+  const tabLinks = [...document.querySelectorAll('.primary-nav a[href^="#"]')];
   const sections = new IntersectionObserver(entries => entries.forEach(({target,isIntersecting}) => {
     if(isIntersecting) tabLinks.forEach(a => a.classList.toggle('active', a.hash === '#'+target.id));
   }), {rootMargin:'-24% 0px -66% 0px'});

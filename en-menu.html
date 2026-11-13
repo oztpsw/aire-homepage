@@ -187,12 +187,14 @@ footer{background:var(--green)!important}
  #content .face-body-courses{gap:24px}#content .face-body-courses>.course{padding:22px 0 0}
 }
 </style>
-<link rel="stylesheet" href="visual-polish.css">
+<link rel="stylesheet" href="visual-polish.css?v=20261113-2">
 <link rel="stylesheet" href="localized-polish.css">
 <link rel="alternate" hreflang="zh-CN" href="https://airespaseoul.com/zh-menu.html">
-<link rel="stylesheet" href="language-switch.css?v=20261006-native">
-<script src="language-switch.js?v=20261021-reservation" defer></script>
+<link rel="stylesheet" href="language-switch.css?v=20261113">
+<script src="language-switch.js?v=20261113" defer></script>
 <link rel="stylesheet" href="footer-contact.css?v=20261006">
+<link rel="stylesheet" href="menu-refinement.css">
+<script src="menu-navigation.js" defer></script>
 </head>
 <body>
 <a class="mobile-reserve" data-i18n="navReserve" data-nav-key="reservation" href="en.html#reservation">예약</a><div class="localized-scroll">
@@ -226,7 +228,7 @@ footer{background:var(--green)!important}
 <div class="footer-reservation-block">
 <h3>RESERVATION</h3>
 <div class="footer-reservation-lines">
-<a href="tel:+8225645455">02-564-5455</a><a href="tel:+821024975455">010-2497-5455</a>
+<a href="tel:+8225645455">+82-2-564-5455</a><a href="tel:+821024975455">+82-10-2497-5455</a>
 <a class="footer-instagram-row" href="https://www.instagram.com/aire.spa.aesthetic/" rel="noopener" target="_blank">
 <svg aria-hidden="true" viewbox="0 0 24 24"><defs><radialgradient cx="30%" cy="105%" id="footerInstagramGradient" r="120%"><stop offset="0%" stop-color="#ffd600"></stop><stop offset="28%" stop-color="#ff7a00"></stop><stop offset="52%" stop-color="#ff0169"></stop><stop offset="78%" stop-color="#d300c5"></stop><stop offset="100%" stop-color="#7638fa"></stop></radialgradient></defs><rect fill="url(#footerInstagramGradient)" height="20" rx="6" width="20" x="2" y="2"></rect><rect fill="none" height="11.6" rx="3.5" stroke="#fff" stroke-width="1.75" width="11.6" x="6.2" y="6.2"></rect><circle cx="12" cy="12" fill="none" r="2.8" stroke="#fff" stroke-width="1.75"></circle><circle cx="16.4" cy="7.7" fill="#fff" r=".9"></circle></svg>
 <span>@aire.spa.aesthetic</span>
@@ -275,18 +277,12 @@ function render(l){
 
 const menuNavLabels={ko:{about:'ABOUT',programs:'프로그램',space:'공간',location:'위치',reservation:'예약'},en:{about:'ABOUT',programs:'PROGRAMS',space:'SPACE',location:'LOCATION',reservation:'RESERVATION'},ja:{about:'ABOUT',programs:'プログラム',space:'施設',location:'アクセス',reservation:'予約'}};
 let menuRevealObserver=null;
-let menuTabObserver=null;
 function initMenuReveals(){
   if(menuRevealObserver)menuRevealObserver.disconnect();
   menuRevealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');menuRevealObserver.unobserve(entry.target)}})},{threshold:.08});
   document.querySelectorAll('.reveal:not(.is-visible)').forEach(el=>menuRevealObserver.observe(el));
 }
-function initMenuTabs(){
-  if(menuTabObserver)menuTabObserver.disconnect();
-  const links=[...document.querySelectorAll('.tabs a')];
-  menuTabObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))})},{rootMargin:'-24% 0px -66% 0px'});
-  ['body','couple','facial'].forEach(id=>{const el=document.getElementById(id);if(el)menuTabObserver.observe(el)});
-}
+function initMenuTabs(){document.dispatchEvent(new Event('aire-menu-render'));}
 function postMenuRender(l){
   const t=T[l]||T.ko;
   document.getElementById('ctaTitle').textContent=t.ctaTitle;
@@ -314,4 +310,4 @@ menuHeaderState();window.addEventListener('scroll',menuHeaderState,{passive:true
 const languagePageUrls={"ko":"menu.html","en":"en-menu.html","ja":"ja-menu.html"};
 document.querySelectorAll('.lang button').forEach(button=>button.addEventListener('click',()=>{const target=languagePageUrls[button.dataset.lang];if(target&&location.pathname.split('/').pop()!==target)location.href=target},{capture:true}));
 </script><script src="localized-polish.js"></script>
-<script src="analytics-consent.js?v=20260831-2"></script></body></html>
+<script src="analytics-consent.js?v=20261113"></script></body></html>

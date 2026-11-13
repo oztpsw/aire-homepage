@@ -88,7 +88,8 @@
     if (host === 'booking.naver.com' || host === 'm.booking.naver.com') return ['reservation_click', 'naver'];
     if (host === 'aire-spa-reservation.aire-spa-reservation.workers.dev' && url.pathname === '/book') return ['reservation_click', 'direct'];
     if (host === 'maps.app.goo.gl' || host === 'map.naver.com' || host === 'naver.me' || host === 'map.kakao.com' || ((host === 'google.com' || host === 'maps.google.com') && (url.pathname.includes('/maps') || host === 'maps.google.com'))) return ['directions_click', host.includes('naver') ? 'naver_maps' : host.includes('kakao') ? 'kakao_maps' : 'google_maps'];
-    if (host === 'instagram.com') return [brand === 'aire_spa' ? 'inquiry_click' : 'social_click', 'instagram'];
+    if (host === 'instagram.com' || host === 'ig.me') return [brand === 'aire_spa' ? 'inquiry_click' : 'social_click', 'instagram'];
+    if (host === 'line.me') return ['inquiry_click', 'line'];
     if (host === 'facebook.com' || host === 'm.facebook.com') return ['social_click', 'facebook'];
     if (url.origin === window.location.origin && url.hash === '#reservation') return ['reservation_open', 'website'];
     if (url.origin === window.location.origin && (url.hash === '#visit' || url.hash === '#location')) return ['location_open', 'website'];
@@ -138,7 +139,7 @@
   if (copyright && !copyright.querySelector('.analytics-privacy-link')) {
     const privacyLink = document.createElement('a');
     privacyLink.className = 'analytics-privacy-link';
-    privacyLink.href = lang.startsWith('zh') ? 'zh-privacy.html' : 'privacy.html';
+    privacyLink.href = lang.startsWith('zh') ? 'zh-privacy.html' : lang.startsWith('ja') ? 'ja-privacy.html' : lang.startsWith('en') ? 'en-privacy.html' : 'privacy.html';
     privacyLink.textContent = copy.privacy;
     copyright.appendChild(privacyLink);
   }

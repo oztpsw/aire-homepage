@@ -1,0 +1,13 @@
+/* The landing pages use the same contact choices as the home pages. */
+.booking-options{display:grid;gap:12px}
+.booking-option{display:flex;align-items:center;gap:14px;min-width:0;min-height:88px;padding:18px 20px;border:1px solid #c9c9c0;background:#fffdfa;color:#102a24;transition:background .2s,border-color .2s}
+.booking-option:hover{background:#f0eee5;border-color:#102a24}
+.booking-channel-icon{display:block;width:28px;height:28px;object-fit:contain;flex:0 0 28px}
+.booking-copy{flex:1;min-width:0}
+.booking-copy strong,.booking-copy small{display:block}
+.booking-copy strong{font-size:17px;font-weight:500;line-height:1.45}
+.booking-copy small{margin-top:4px;font-size:14px;line-height:1.6;color:#5f625c;overflow-wrap:anywhere}
+.booking-arrow{flex:0 0 34px;display:grid;place-items:center;width:34px;height:34px;font-size:20px}
+.direct-contact-note{margin:14px 0 2px;font-size:15px;line-height:1.8;color:#535650;text-wrap:pretty}
+@media(max-width:720px){.booking-option{padding:16px;min-height:88px}.booking-copy strong{font-size:16px}.direct-contact-note{font-size:14px}}
+.direct-contact-note .contact-phrase{display:inline-block;white-space:nowrap}

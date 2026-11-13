@@ -26,3 +26,17 @@
  .has-chinese .lang{gap:4px}
  .has-chinese .menu-toggle{margin-left:0}
 }
+
+/* Keep language choices readable and comfortably tappable on narrow screens. */
+@media(max-width:720px){
+ .has-chinese .lang{font-size:12px;gap:2px}
+ .has-chinese .lang button,.has-chinese .lang a{min-width:30px;min-height:44px;padding-inline:4px;display:inline-grid;place-items:center}
+ .has-chinese .header-actions{gap:6px}
+ .has-chinese .menu-toggle{width:40px;height:44px;flex-shrink:0}
+}
+@media(max-width:360px){
+ .has-chinese.site-header{padding-inline:12px}
+ .site-header.has-chinese .logo{width:88px;min-width:0}
+ .has-chinese .lang button,.has-chinese .lang a{padding-inline:3px}
+ .has-chinese .header-actions{gap:4px}
+}

@@ -83,3 +83,5 @@ html[lang="ja"] .interview-body blockquote{font-size:38px;line-height:1.5;letter
 }
 .interview-title-phrase,.quote-phrase,.caption-phrase{display:inline-block;white-space:nowrap}
 @media(max-width:720px){.interview-title-phrase{display:block}}
+/* Avoid a short Japanese sentence ending on its own line. */
+.direct-contact-note .contact-phrase{display:inline-block;white-space:nowrap}

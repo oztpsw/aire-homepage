@@ -1,6 +1,6 @@
 // Version only language-switch destinations so a cached pre-label page is not reused.
 (() => {
-  const revision = '20261021-reservation';
+  const revision = '20261113';
   const groups = [
     {ko:'index.html',en:'en.html',ja:'ja.html','zh-CN':'zh.html'},
     {ko:'about.html',en:'en-about.html',ja:'ja-about.html','zh-CN':'zh-about.html'},

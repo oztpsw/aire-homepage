@@ -1,4 +1,4 @@
-/* Loaded only by EN/JA pages; Korean pages retain their existing presentation. */
+/* Shared mobile scroll area keeps the reservation bar clear of page content. */
 .localized-scroll{display:contents}
 .treatment-step{display:inline-block;white-space:nowrap}
 .process p{display:flex;flex-wrap:wrap;gap:4px 8px}

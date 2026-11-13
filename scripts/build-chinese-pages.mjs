@@ -13,7 +13,7 @@ const pages=[
 const names=Object.fromEntries(pages.map(([s,t])=>[s,t]));
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&nbsp;','\u00a0').replaceAll('&quot;','"').replaceAll('&#39;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 const encode=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const keep=new Set(['EN','JP','KR','AIRE SPA','& AESTHETIC','AIRE SPA & AESTHETIC','Deeply Different.','시사와이드경제','→','↗','01','02','03','INSTAGRAM','WHATSAPP','WhatsApp','@aire.spa.aesthetic','02-564-5455','010-2497-5455','A SIGNATURE','B SIGNATURE','C SIGNATURE','ENERGY RITUAL','ENERGY COMPLETE','LINE & VOLUME RITUAL','LINE & VOLUME COMPLETE','← AIRE SPA','_ga','_ga_<container-id>','简中','简体中文','中文','日本語','한국어']);
+const keep=new Set(['EN','JP','KR','AIRE SPA','& AESTHETIC','AIRE SPA & AESTHETIC','Deeply Different.','시사와이드경제','→','↗','01','02','03','INSTAGRAM','WHATSAPP','WhatsApp','@aire.spa.aesthetic','02-564-5455','010-2497-5455','+82-2-564-5455','+82-10-2497-5455','A SIGNATURE','B SIGNATURE','C SIGNATURE','ENERGY RITUAL','ENERGY COMPLETE','LINE & VOLUME RITUAL','LINE & VOLUME COMPLETE','← AIRE SPA','_ga','_ga_<container-id>','简中','简体中文','中文','日本語','한국어','MEDIA','×']);
 function translate(s){
  const key=decode(s).trim();
  if(!key)return s;
@@ -53,7 +53,7 @@ for(const[source,target,title,description]of pages){
    const data=JSON.parse(block.replace(/^.*?>/s,'').replace(/<\/script>$/,''));
    return '<script type="application/ld+json">\n'+JSON.stringify(schemaTranslate(data,title,description,target,source),null,2)+'\n</script>';
   }
-  return block.includes('analytics-consent.js')||block.includes('localized-polish.js')||block.includes('language-switch.js')?block:'';
+  return ['analytics-consent.js','localized-polish.js','language-switch.js','media.js','menu-navigation.js'].some(name=>block.includes(name))?block:'';
  });
  html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${encode(title)}</title>`);
  html=html.replace(/<meta\b[^>]*(?:name="(?:description|twitter:title|twitter:description)"|property="(?:og:title|og:description|og:url|og:locale)")[^>]*>/g,tag=>{
@@ -74,6 +74,7 @@ for(const[source,target,title,description]of pages){
   return translate(text);
  });
  body=body.replace(/\b(alt|aria-label|title)="([^"]*)"/g,(m,k,v)=>`${k}="${v?translate(v):''}"`);
+ body=body.replaceAll('适用于已有 NAVER 账号的客人（韩语页面）','适用于已有 NAVER 账号的客人<span style="white-space:nowrap">（韩语页面）</span>');
  // Chinese pages use real links; no runtime language substitution can overwrite them.
  body=body.replace(/<button\b[^>]*data-lang="(en|ja|ko)"[^>]*>[\s\S]*?<\/button>/g,(_,lang)=>{
   const root=source==='en.html'?{en:'en.html',ja:'ja.html',ko:'index.html'}:source==='en-about.html'?{en:'en-about.html',ja:'ja-about.html',ko:'about.html'}:{en:'en-menu.html',ja:'ja-menu.html',ko:'menu.html'};
@@ -96,8 +97,8 @@ for(const[source,target,title,description]of pages){
  if(source!=='privacy.html'&&!head.includes('hreflang="zh-CN"'))head=head.replace('</head>',`<link rel="alternate" hreflang="zh-CN" href="${origin+target}">\n</head>`);
  if(!head.includes('href="language-switch.css'))head=head.replace('</head>','<link rel="stylesheet" href="language-switch.css?v=20261006-native">\n</head>');
  head=head.replace('</head>','<link rel="stylesheet" href="chinese.css">\n</head>');
- body=body.replace(/src="localized-polish\.js[^"]*"/g,'src="localized-polish.js?v=zh-20261006"').replace(/src="analytics-consent\.js[^"]*"/g,'src="analytics-consent.js?v=zh-20261006"');
- body=body.replace('</body>','<script src="chinese-page.js"></script>\n</body>');
+ body=body.replace(/src="localized-polish\.js[^"]*"/g,'src="localized-polish.js?v=zh-20261006"').replace(/src="analytics-consent\.js[^"]*"/g,'src="analytics-consent.js?v=20261113"');
+ body=body.replace('</body>','<script src="chinese-page.js?v=20261113"></script>\n</body>');
  fs.writeFileSync(target,head+body);
  console.log(`Built ${target}`);
 }
