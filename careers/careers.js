@@ -2,7 +2,7 @@
  'use strict';
  const api=window.AIRE_RECRUITMENT.api;
  const status=document.getElementById('recruitment-status'),apply=document.getElementById('apply-link'),form=document.getElementById('application-form');
- const statusText={active:'적극 채용 중',evergreen:'상시 지원 접수 중',paused:'현재 지원 접수를 잠시 중단했습니다.'};
+ const statusText={active:'',evergreen:'',paused:'현재 지원 접수를 잠시 중단했습니다.'};
  let catalog,requestKey=crypto.randomUUID(),token='',widgetId,busy=false,submitted=false;
  const feedback=document.getElementById('feedback');
  function message(text,success=false){if(!feedback)return;feedback.textContent=text;feedback.className='feedback '+(success?'success':'error');feedback.focus();}
@@ -10,7 +10,7 @@
  async function load(){
   try{
    const r=await fetch(api,{credentials:'omit',cache:'no-store',signal:AbortSignal.timeout(12000)});if(!r.ok)throw new Error();catalog=await r.json();
-   status.textContent=statusText[catalog.status]||statusText.paused;
+   status.textContent=statusText[catalog.status]??statusText.paused;status.hidden=catalog.status==='active'||catalog.status==='evergreen';
    const content=catalog.content?.ko||{};
    const details=document.getElementById('job-details');
    if(details){const labels={duties:'담당 업무',qualifications:'지원 자격·우대사항',location:'근무 장소',employment:'근무 형태',schedule:'근무일·시간',compensation:'급여·정산 방식',process:'채용 절차',notes:'기타 안내'};for(const [key,label] of Object.entries(labels)){if(!content[key]?.trim())continue;const row=document.createElement('div');row.className='job-row';const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=content[key];row.append(dt,dd);details.append(row);}document.getElementById('job-empty').hidden=details.children.length>0;if(content.intro)document.getElementById('intro-text').textContent=content.intro;}
