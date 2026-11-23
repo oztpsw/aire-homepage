@@ -13,7 +13,7 @@ for(const file of readdirSync(root).filter(f=>f.endsWith('.html'))){
 }
 for(const relative of ['careers/index.html','careers/apply/index.html']){
  const html=readFileSync(path.join(root,relative),'utf8');assert.match(html,/<html lang="ko">/);assert.match(html,/<h1>/);assert.match(html,/name="viewport"/);assert.match(html,/rel="canonical"/);
- for(const match of html.matchAll(/(?:href|src)="(\/[^"]*)"/g)){let file=path.join(root,match[1].split('#')[0]);assert.ok(existsSync(file),`missing asset/link ${file}`);if(statSync(file).isDirectory())assert.ok(existsSync(path.join(file,'index.html')));}
+ for(const match of html.matchAll(/(?:href|src)="(\/[^"]*)"/g)){let file=path.join(root,match[1].split(/[?#]/)[0]);assert.ok(existsSync(file),`missing asset/link ${file}`);if(statSync(file).isDirectory())assert.ok(existsSync(path.join(file,'index.html')));}
 }
 const form=readFileSync(path.join(root,'careers/apply/index.html'),'utf8');for(const name of ['name','phone','experience','workType','consent'])assert.ok(new RegExp(`name="${name}"[^>]*required`).test(form),`required ${name}`);
 assert.ok(!/name="field"/.test(form));assert.ok(!/type="file"/.test(form));assert.match(form,/id="application-form" hidden/);
