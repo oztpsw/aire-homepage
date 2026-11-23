@@ -25,7 +25,7 @@
  }
  if(form){
   form.addEventListener('submit',async event=>{event.preventDefault();if(busy||submitted||!form.reportValidity())return;if(!token){message('보안 확인을 완료한 뒤 제출해 주세요.');return;}
-   const values=Object.fromEntries(new FormData(form));const payload={...values,consent:form.elements.consent.checked,locale:'ko',requestKey,policyVersion:catalog.policyVersion,token};
+   const values=Object.fromEntries(new FormData(form));const payload={...values,field:'body',consent:form.elements.consent.checked,locale:'ko',requestKey,policyVersion:catalog.policyVersion,token};
    busy=true;const button=form.querySelector('button[type=submit]');button.disabled=true;button.textContent='접수 중…';
    try{const r=await fetch(api,{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(20000)});const result=await r.json();if(!r.ok){message(errors[result.code]||errors.unavailable);return;}if(!result.ok||!/^AIR-[A-F0-9]{32}$/.test(result.receipt))throw new Error();submitted=true;form.reset();form.hidden=true;message(`지원서가 접수되었습니다. 접수번호: ${result.receipt}\n접수번호를 따로 보관해 주세요. 검토 후 입력하신 연락처로 안내드립니다.`,true);requestKey=crypto.randomUUID();}
    catch{message(errors.unavailable);}finally{busy=false;button.disabled=false;button.textContent='지원서 제출하기';token='';if(widgetId!==undefined&&window.turnstile)window.turnstile.reset(widgetId);}
